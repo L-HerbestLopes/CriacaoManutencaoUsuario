@@ -5,8 +5,7 @@
 package com.pss.sistemanotificacaoprojetos.view;
 
 /**
- *
- * @author lu
+ * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
  */
 public class SistemaView extends javax.swing.JFrame {
     

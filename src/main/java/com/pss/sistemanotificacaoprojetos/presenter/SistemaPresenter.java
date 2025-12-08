@@ -3,8 +3,7 @@ package com.pss.sistemanotificacaoprojetos.presenter;
 import com.pss.sistemanotificacaoprojetos.model.Usuario;
 import com.pss.sistemanotificacaoprojetos.model.UsuarioRepository;
 import com.pss.sistemanotificacaoprojetos.view.SistemaView;
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JInternalFrame;
 
 /**
  * Classe presenter singleton que lida com o sistema/desktop principal do MDI
@@ -13,15 +12,12 @@ import java.util.List;
 public class SistemaPresenter {
     private final SistemaView view;
     private static SistemaPresenter instancia;
-    private final List<JanelaPresenter> janelas;
     private Usuario usuario;
     private UsuarioRepository repository;
     
     private SistemaPresenter() {
         view = new SistemaView();
         configuraView();
-        
-        janelas = new ArrayList<>();
         
         // inicialização de outras coisas junto ao construtor
         // usuario se mantém null até autenticação/cadastro
@@ -38,8 +34,10 @@ public class SistemaPresenter {
         this.repository = repository;
     }
     
-    public void abrirJanela() {
+    public void abrirJanela(JanelaPresenter janela) {
         
+        JInternalFrame janelaView = janela.getView();
+        view.add(janelaView);
     }
     
     private void configuraView() {

@@ -2,6 +2,7 @@ package com.pss.sistemanotificacaoprojetos;
 
 import com.pss.sistemanotificacaoprojetos.model.Usuario;
 import com.pss.sistemanotificacaoprojetos.model.UsuarioRepository;
+import com.pss.sistemanotificacaoprojetos.presenter.FormularioUsuarioPresenter;
 import com.pss.sistemanotificacaoprojetos.presenter.SistemaPresenter;
 import java.util.ArrayList;
 
@@ -16,5 +17,8 @@ public class SistemaNotificacaoProjetos {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         UsuarioRepository repository = new UsuarioRepository(usuarios);
         sistema.setRepository(repository);
+        
+        FormularioUsuarioPresenter formulario = new FormularioUsuarioPresenter("Editar usuário");
+        sistema.abrirJanela(formulario);
     }
 }
