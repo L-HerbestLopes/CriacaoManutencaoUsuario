@@ -1,4 +1,4 @@
-package com.pss.sistemanotificacaoprojetos.model;
+package com.pss.criacaomanutencaousuarios.model;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida

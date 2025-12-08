@@ -1,8 +1,8 @@
-package com.pss.sistemanotificacaoprojetos.presenter;
+package com.pss.criacaomanutencaousuarios.presenter;
 
-import com.pss.sistemanotificacaoprojetos.model.Usuario;
-import com.pss.sistemanotificacaoprojetos.model.UsuarioRepository;
-import com.pss.sistemanotificacaoprojetos.view.SistemaView;
+import com.pss.criacaomanutencaousuarios.model.Usuario;
+import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.view.SistemaView;
 import javax.swing.JInternalFrame;
 
 /**

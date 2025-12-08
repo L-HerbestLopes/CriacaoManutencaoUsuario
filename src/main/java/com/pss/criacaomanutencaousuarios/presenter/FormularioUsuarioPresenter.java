@@ -1,7 +1,7 @@
 
-package com.pss.sistemanotificacaoprojetos.presenter;
+package com.pss.criacaomanutencaousuarios.presenter;
 
-import com.pss.sistemanotificacaoprojetos.view.FormularioUsuarioView;
+import com.pss.criacaomanutencaousuarios.view.FormularioUsuarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;

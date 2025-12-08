@@ -1,15 +1,15 @@
-package com.pss.sistemanotificacaoprojetos;
+package com.pss.criacaomanutencaousuarios;
 
-import com.pss.sistemanotificacaoprojetos.model.Usuario;
-import com.pss.sistemanotificacaoprojetos.model.UsuarioRepository;
-import com.pss.sistemanotificacaoprojetos.presenter.FormularioUsuarioPresenter;
-import com.pss.sistemanotificacaoprojetos.presenter.SistemaPresenter;
+import com.pss.criacaomanutencaousuarios.model.Usuario;
+import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.presenter.FormularioUsuarioPresenter;
+import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
 import java.util.ArrayList;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
  */
-public class SistemaNotificacaoProjetos {
+public class Principal {
 
     public static void main(String[] args) {
         SistemaPresenter sistema = SistemaPresenter.getInstancia();

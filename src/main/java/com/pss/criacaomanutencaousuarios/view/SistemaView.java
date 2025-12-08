@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.pss.sistemanotificacaoprojetos.view;
+package com.pss.criacaomanutencaousuarios.view;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida

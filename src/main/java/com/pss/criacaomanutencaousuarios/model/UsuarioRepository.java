@@ -1,4 +1,4 @@
-package com.pss.sistemanotificacaoprojetos.model;
+package com.pss.criacaomanutencaousuarios.model;
 
 import java.util.ArrayList;
 import java.util.List;
