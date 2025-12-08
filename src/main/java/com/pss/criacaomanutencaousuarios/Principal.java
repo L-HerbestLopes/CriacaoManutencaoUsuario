@@ -31,7 +31,7 @@ public class Principal {
     
 	    
     public static void listTables(Connection conn) {
-        // Consulta o sqlite_master para encontrar todas as tabelas
+        // Consulta o sqlite_master para encontrar todas as tabelas (temporário)
         String sql = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'";
 
         try (Statement stmt = conn.createStatement();
