@@ -31,4 +31,8 @@ public class UsuarioRepository {
         
         return null;
     }
+    
+    public List<Usuario> getAll() {
+        return usuarios;
+    }
 }

@@ -3,13 +3,16 @@ package com.pss.criacaomanutencaousuarios;
 import com.pss.criacaomanutencaousuarios.database.DatabaseConnection;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.presenter.EnvioNotificacaoPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.FormularioUsuarioPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
+import com.pss.criacaomanutencaousuarios.temp.TipoDeUsuarioEnum;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
@@ -25,8 +28,18 @@ public class Principal {
         UsuarioRepository repository = new UsuarioRepository(usuarios);
         sistema.setRepository(repository);
         
-        FormularioUsuarioPresenter formulario = new FormularioUsuarioPresenter("Editar usuário");
-        sistema.abrirJanela(formulario);
+        repository.incluirUsuario(new Usuario(
+                "Marcos", "marcos123", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
+                        ));
+        repository.incluirUsuario(new Usuario(
+                "Júlia", "senhajulia", TipoDeUsuarioEnum.administrador, LocalDate.now()
+                        ));
+        repository.incluirUsuario(new Usuario(
+                "Guilherme", "silva2003", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
+                        ));
+        
+        EnvioNotificacaoPresenter janela = new EnvioNotificacaoPresenter(repository);
+        sistema.abrirJanela(janela);
     }
     
 	    
