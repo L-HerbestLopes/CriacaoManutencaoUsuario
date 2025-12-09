@@ -1,8 +1,13 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
+import com.pss.criacaomanutencaousuarios.model.Notificacao;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.EnvioNotificacaoView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -11,9 +16,11 @@ import javax.swing.table.DefaultTableModel;
 public class EnvioNotificacaoPresenter implements JanelaPresenter {
     private EnvioNotificacaoView view;
     private UsuarioRepository usuarios;
+    private NotificacaoUsuarioService notificacaoService;
     
-    public EnvioNotificacaoPresenter(UsuarioRepository usuarios) {
+    public EnvioNotificacaoPresenter(UsuarioRepository usuarios, NotificacaoUsuarioService notificacaoService) {
         this.usuarios = usuarios;
+        this.notificacaoService = notificacaoService;
         view = new EnvioNotificacaoView();
         
         configuraView();
@@ -26,6 +33,34 @@ public class EnvioNotificacaoPresenter implements JanelaPresenter {
     
     private void configuraView() {
         carregarUsuarios(view.getTblUsuarios());
+        
+        view.getBtnMarcarTodos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                preencher(view.getTblUsuarios(), true);
+            }
+        });
+        
+        view.getBtnDesmarcarTodos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                preencher(view.getTblUsuarios(), false);
+            }
+        });
+        
+        view.getBtnEnviar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enviar();
+            }
+        });
+        
+        view.getBtnCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cancelar();
+            }
+        });
         
         view.setVisible(true);
     }
@@ -40,4 +75,31 @@ public class EnvioNotificacaoPresenter implements JanelaPresenter {
             });
         }
     }  
+    
+    private void preencher(JTable tabela, boolean opcao) {
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        
+        for(int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.setValueAt(opcao, i, 0);
+        }
+    }
+    
+    private void enviar() {
+        Notificacao notificacao = new Notificacao(view.getTxtMensagem().getText());
+        List<Usuario> usuarios = new ArrayList<>();
+        
+        DefaultTableModel modelo = (DefaultTableModel) view.getTblUsuarios().getModel();
+        for(int i = 0; i < modelo.getRowCount(); i++) {
+            if((boolean) modelo.getValueAt(i, 0)) {
+                String nome = modelo.getValueAt(i, 1).toString();
+                usuarios.add(this.usuarios.acharUsuario(nome));
+            }
+        }
+        
+        notificacaoService.EnviarNotificacao(usuarios, notificacao);
+    }
+    
+    private void cancelar() {
+        view.dispose();
+    }
 }

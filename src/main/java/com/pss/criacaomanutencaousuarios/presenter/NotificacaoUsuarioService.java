@@ -24,7 +24,14 @@ public class NotificacaoUsuarioService {
         
         for(Usuario usuario : usuarios) {
             NotificacaoUsuario notificacaoUsuario = new NotificacaoUsuario(notificacao, usuario);
-            notificacoesUsuario.incluirNotificacaoUsuario(notificacaoUsuario);
+            // NotificacaoUsuarioService vai se comunicar com NotifiacaoUsuarioRepository no futuro
+            // notificacoesUsuario.incluirNotificacaoUsuario(notificacaoUsuario);
+            
+            // por enquanto, print para debug:
+            System.out.println(
+                    "Notificação enviada para " + notificacaoUsuario.getUsuario().getNome() + ": \"" +
+                    notificacaoUsuario.getNotificacao().getMessage() + "\""
+            );
         }
     }
 }
