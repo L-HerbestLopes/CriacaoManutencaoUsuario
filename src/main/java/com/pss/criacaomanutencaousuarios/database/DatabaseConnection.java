@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
-    private static final String DATABASE_URL = "jdbc:sqlite:seu_banco.sqlite"; 
+    private static final String DATABASE_URL = "jdbc:sqlite:banco_dados.db"; 
 
     public static Connection connect() {
         Connection conn = null;

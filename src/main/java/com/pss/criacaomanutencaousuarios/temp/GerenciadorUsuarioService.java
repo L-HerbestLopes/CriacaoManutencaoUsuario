@@ -1,4 +1,4 @@
-package temp;
+package com.pss.criacaomanutencaousuarios.temp;
 
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 

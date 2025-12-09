@@ -1,6 +1,6 @@
 package com.pss.criacaomanutencaousuarios.model;
 
-import temp.TipoDeUsuarioEnum;
+import com.pss.criacaomanutencaousuarios.temp.TipoDeUsuarioEnum;
 import java.time.LocalDate;
 
 /**
