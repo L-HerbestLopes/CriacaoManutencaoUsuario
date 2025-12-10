@@ -7,7 +7,7 @@ import com.pss.criacaomanutencaousuarios.presenter.EnvioNotificacaoPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.FormularioUsuarioPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
-import com.pss.criacaomanutencaousuarios.temp.TipoDeUsuarioEnum;
+import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
