@@ -4,7 +4,7 @@ import com.pss.criacaomanutencaousuarios.database.DatabaseConnection;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.presenter.EnvioNotificacaoPresenter;
-import com.pss.criacaomanutencaousuarios.presenter.FormularioUsuarioPresenter;
+import com.pss.criacaomanutencaousuarios.presenter.CadastroUsuarioPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
