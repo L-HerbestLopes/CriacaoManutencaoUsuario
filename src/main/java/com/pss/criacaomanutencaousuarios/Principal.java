@@ -1,6 +1,8 @@
 package com.pss.criacaomanutencaousuarios;
 
 import com.pss.criacaomanutencaousuarios.database.DatabaseConnection;
+import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
+import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.presenter.EnvioNotificacaoPresenter;
@@ -26,8 +28,10 @@ public class Principal {
         SistemaPresenter sistema = SistemaPresenter.getInstancia();
         
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<NotificacaoUsuario> notificacoes = new ArrayList<>();
         UsuarioRepository repository = new UsuarioRepository(usuarios);
-        sistema.setRepository(repository);
+        sistema.setUsuarioRepository(repository);
+        sistema.setNotificacaoUsuarioRepository(new NotificacaoUsuarioRepository(notificacoes));
         
         repository.incluirUsuario(new Usuario(
                 "Marcos", "marcos123", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
@@ -40,6 +44,7 @@ public class Principal {
                         ));
         
         sistema.setUsuario(repository.acharUsuario("Júlia"));
+        sistema.recarregarView();
     }
     
 	    

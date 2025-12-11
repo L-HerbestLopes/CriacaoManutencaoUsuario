@@ -6,6 +6,7 @@ import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,5 +34,17 @@ public class NotificacaoUsuarioService {
                     notificacaoUsuario.getNotificacao().getMessage() + "\""
             );
         }
+    }
+    
+    public List<NotificacaoUsuario> getNotificacoes(Usuario usuario, NotificacaoUsuarioRepository repository) {
+        List<NotificacaoUsuario> notificacoesSaida = new ArrayList<>();
+        
+        for(NotificacaoUsuario notificacao : repository.getAll()) {
+            if(notificacao.getUsuario().equals(usuario)) {
+                notificacoesSaida.add(notificacao);
+            }
+        }
+        
+        return notificacoesSaida;
     }
 }

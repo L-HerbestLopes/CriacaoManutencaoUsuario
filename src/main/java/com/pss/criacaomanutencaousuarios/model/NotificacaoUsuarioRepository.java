@@ -19,4 +19,8 @@ public class NotificacaoUsuarioRepository {
         if(notificacoes.isEmpty()) throw new RuntimeException("O repositório de notificações está vazio.");
         if(notificacoes == null) throw new RuntimeException("O repositório de notificações não foi iniciado propriamente");
     }
+    
+    public List<NotificacaoUsuario> getAll() {
+        return notificacoes;
+    }
 }

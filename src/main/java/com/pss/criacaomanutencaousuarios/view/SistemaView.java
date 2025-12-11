@@ -4,6 +4,7 @@
  */
 package com.pss.criacaomanutencaousuarios.view;
 
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
@@ -86,5 +87,9 @@ public class SistemaView extends javax.swing.JFrame {
 
     public JMenuItem getMitVisualizarNotificacoes() {
         return mitVisualizarNotificacoes;
+    }
+
+    public JMenuBar getMnbSistema() {
+        return mnbSistema;
     }
 }
