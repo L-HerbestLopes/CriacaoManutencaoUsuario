@@ -3,6 +3,8 @@ package com.pss.criacaomanutencaousuarios.presenter;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.SistemaView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
 
 /**
@@ -34,6 +36,10 @@ public class SistemaPresenter {
         this.repository = repository;
     }
     
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     public void abrirJanela(JanelaPresenter janela) {
         
         JInternalFrame janelaView = janela.getView();
@@ -41,6 +47,13 @@ public class SistemaPresenter {
     }
     
     private void configuraView() {
+        view.getMitEnviarNotificacoes().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirJanela(new EnvioNotificacaoPresenter(repository));
+            }
+        });
+        
         view.setVisible(true);
     }
 }

@@ -39,8 +39,7 @@ public class Principal {
                 "Guilherme", "silva2003", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
                         ));
         
-        EnvioNotificacaoPresenter janela = new EnvioNotificacaoPresenter(repository, new NotificacaoUsuarioService());
-        sistema.abrirJanela(janela);
+        sistema.setUsuario(repository.acharUsuario("Júlia"));
     }
     
 	    

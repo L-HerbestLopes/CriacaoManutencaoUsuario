@@ -18,9 +18,9 @@ public class EnvioNotificacaoPresenter implements JanelaPresenter {
     private UsuarioRepository usuarios;
     private NotificacaoUsuarioService notificacaoService;
     
-    public EnvioNotificacaoPresenter(UsuarioRepository usuarios, NotificacaoUsuarioService notificacaoService) {
+    public EnvioNotificacaoPresenter(UsuarioRepository usuarios) {
         this.usuarios = usuarios;
-        this.notificacaoService = notificacaoService;
+        this.notificacaoService = new NotificacaoUsuarioService();
         view = new EnvioNotificacaoView();
         
         configuraView();

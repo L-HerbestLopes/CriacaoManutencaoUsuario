@@ -4,6 +4,8 @@
  */
 package com.pss.criacaomanutencaousuarios.view;
 
+import javax.swing.JMenuItem;
+
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
  */
@@ -27,7 +29,32 @@ public class SistemaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mnbSistema = new javax.swing.JMenuBar();
+        mnuUsuario = new javax.swing.JMenu();
+        mnuNotificacoes = new javax.swing.JMenu();
+        mitVisualizarNotificacoes = new javax.swing.JMenuItem();
+        mitEnviarNotificacoes = new javax.swing.JMenuItem();
+        mnuSistema = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        mnuUsuario.setText("Usuário");
+        mnbSistema.add(mnuUsuario);
+
+        mnuNotificacoes.setText("Notificações");
+
+        mitVisualizarNotificacoes.setText("Visualizar notificações");
+        mnuNotificacoes.add(mitVisualizarNotificacoes);
+
+        mitEnviarNotificacoes.setText("Enviar notificações");
+        mnuNotificacoes.add(mitEnviarNotificacoes);
+
+        mnbSistema.add(mnuNotificacoes);
+
+        mnuSistema.setText("Sistema");
+        mnbSistema.add(mnuSistema);
+
+        setJMenuBar(mnbSistema);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,7 +64,7 @@ public class SistemaView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+            .addGap(0, 756, Short.MAX_VALUE)
         );
 
         pack();
@@ -45,5 +72,19 @@ public class SistemaView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem mitEnviarNotificacoes;
+    private javax.swing.JMenuItem mitVisualizarNotificacoes;
+    private javax.swing.JMenuBar mnbSistema;
+    private javax.swing.JMenu mnuNotificacoes;
+    private javax.swing.JMenu mnuSistema;
+    private javax.swing.JMenu mnuUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public JMenuItem getMitEnviarNotificacoes() {
+        return mitEnviarNotificacoes;
+    }
+
+    public JMenuItem getMitVisualizarNotificacoes() {
+        return mitVisualizarNotificacoes;
+    }
 }
