@@ -1,6 +1,12 @@
 package com.pss.criacaomanutencaousuarios;
 
 import com.pss.criacaomanutencaousuarios.database.DatabaseConnection;
+import com.pss.criacaomanutencaousuarios.database.NotificacaoTable;
+import com.pss.criacaomanutencaousuarios.database.UsuarioTable;
+import com.pss.criacaomanutencaousuarios.database.NotificacaoUsuarioTable;
+import com.pss.criacaomanutencaousuarios.database.DatabaseInitializer;
+import com.pss.criacaomanutencaousuarios.database.TabelaDatabase;
+import com.pss.criacaomanutencaousuarios.database.TableInfo;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
@@ -11,6 +17,7 @@ import com.pss.criacaomanutencaousuarios.presenter.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
+import java.util.List;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,9 +31,14 @@ import java.time.LocalDate;
 public class Principal {
 
     public static void main(String[] args) {
-        listTables(DatabaseConnection.connect());
+        List<TabelaDatabase> tabelas = new ArrayList<>();
+        tabelas.add(new UsuarioTable());
+        tabelas.add(new NotificacaoTable());
+        tabelas.add(new NotificacaoUsuarioTable());
+        DatabaseInitializer databaseInitializer = new DatabaseInitializer(tabelas);
+        databaseInitializer.inicializar();
         
-        
+        TableInfo.listTables(DatabaseConnection.connect());
         
         SistemaPresenter sistema = SistemaPresenter.getInstancia();
         
@@ -52,32 +64,6 @@ public class Principal {
         new CadastroUsuarioPresenter();
     }
     
-	    
-    public static void listTables(Connection conn) {
-        // Consulta o sqlite_master para encontrar todas as tabelas (temporário)
-        String sql = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'";
-
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            System.out.println("\n--- TABELAS EXISTENTES NO BANCO ---");
-            boolean found = false;
-            
-            while (rs.next()) {
-                String tableName = rs.getString("name");
-                System.out.println("Tabela: " + tableName);
-                found = true;
-            }
-            
-            if (!found) {
-                 System.out.println("Nenhuma tabela de usuário encontrada.");
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Erro ao listar as tabelas: " + e.getMessage());
-        }
-    }
-
 }
 
 
