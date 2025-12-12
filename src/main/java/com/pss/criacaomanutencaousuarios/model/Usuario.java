@@ -21,6 +21,14 @@ public class Usuario {
         this.dataRegistro = data;
         this.ativo = false;
     }
+    public Usuario(String nome, String senha, LocalDate dataRegistro){
+        this.nome = nome;
+        this.senha = senha;
+        this.tipo = TipoDeUsuarioEnum.naoConfirmado;
+        this.dataRegistro = dataRegistro;
+        this.ativo = false;
+    }
+    
 
     public String getNome() {
         return nome;

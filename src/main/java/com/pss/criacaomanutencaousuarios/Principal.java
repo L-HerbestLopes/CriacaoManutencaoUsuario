@@ -10,6 +10,7 @@ import com.pss.criacaomanutencaousuarios.presenter.CadastroUsuarioPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
+import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,6 +25,8 @@ public class Principal {
 
     public static void main(String[] args) {
         listTables(DatabaseConnection.connect());
+        
+        
         
         SistemaPresenter sistema = SistemaPresenter.getInstancia();
         
@@ -45,6 +48,9 @@ public class Principal {
         
         sistema.setUsuario(repository.acharUsuario("Júlia"));
         sistema.recarregarView();
+        
+        CadastroUsuarioView view = new CadastroUsuarioView();
+        new CadastroUsuarioPresenter(view);
     }
     
 	    

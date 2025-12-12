@@ -1,11 +1,15 @@
 package com.pss.criacaomanutencaousuarios.view;
 
-public interface ICadastroUsuarioView {
-    void btnCancelar();
-    void btnConfirmar();
-    
-    String getNomeDigitado();
-    String getSenhaDigitada();
-    String getSenhaConfirmada();
+import java.awt.event.ActionListener;
 
+public interface ICadastroUsuarioView {
+    void addAcaoCadastrar(ActionListener acao);
+    void addAcaoLogin(ActionListener acao);
+    
+    String getTxtNome();
+    String getTxtSenha();
+    String getTxtSenhaConfirmada();
+    
+    void setVisible(boolean visibilidade);
+    void limparCampos();
 }
