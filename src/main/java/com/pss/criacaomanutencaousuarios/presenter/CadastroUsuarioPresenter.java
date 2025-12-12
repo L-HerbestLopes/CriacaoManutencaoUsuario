@@ -6,9 +6,11 @@ import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import com.pss.criacaomanutencaousuarios.view.LoginView;
+import com.pss.senha.validacao.ValidadorSenha;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
@@ -62,11 +64,24 @@ public class CadastroUsuarioPresenter {
     }
     
     private void confirmar() {
-                                                        //TO DO
-                                                        
-                                                        
+    
+        ValidadorSenha validador = new ValidadorSenha();
+        List<String> resultado = validador.validar(view.getTxtSenha());
+        
+        // falha caso validar retorne alguma string indicando erro
+        if(!resultado.isEmpty()) {
+            // no futuro expor esse erro para o usuario
+            System.err.println(resultado.get(0));
+            return;
+        }
+        
+        if(!view.getTxtSenha().equals(view.getTxtSenhaConfirmada())) {
+            // no futuro expor esse erro para o usuario
+            System.err.println("Senhas fornecidas são diferentes!");
+            return;
+        }
+            
     //MOSTRAR adicionado com sucedo (alert) joptionpane
-    //if ( biblioteca verificadora de senhas aqui)
     // view.getTxtSenha(); e view.getTxtSenhaConfirmada();
     
     // 2. Criar o Usuário (Model)
