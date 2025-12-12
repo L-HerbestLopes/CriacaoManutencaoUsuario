@@ -35,4 +35,7 @@ public class UsuarioRepository {
         return usuarios;
     }
     
+    public boolean listaVazia(){
+        return usuarios.isEmpty();
+    }
 }
