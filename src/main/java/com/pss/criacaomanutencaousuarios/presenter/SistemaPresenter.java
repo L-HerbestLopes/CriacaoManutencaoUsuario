@@ -1,5 +1,6 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
+import com.pss.criacaomanutencaousuarios.model.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
@@ -17,7 +18,8 @@ public class SistemaPresenter {
     private static SistemaPresenter instancia;
     private Usuario usuario;
     private UsuarioRepository usuarios;
-    private NotificacaoUsuarioRepository notificacoes;
+    private NotificacaoRepository notificacoes;
+    private NotificacaoUsuarioRepository notificacoesDeUsuario;
     
     private SistemaPresenter() {
         view = new SistemaView();
@@ -38,8 +40,12 @@ public class SistemaPresenter {
         usuarios = repository;
     }
     
-    public void setNotificacaoUsuarioRepository(NotificacaoUsuarioRepository repository) {
+    public void setNotificacoesRepository(NotificacaoRepository repository) {
         notificacoes = repository;
+    }
+    
+    public void setNotificacaoUsuarioRepository(NotificacaoUsuarioRepository repository) {
+        notificacoesDeUsuario = repository;
     }
     
     public void setUsuario(Usuario usuario) {
@@ -59,6 +65,9 @@ public class SistemaPresenter {
         if(usuario.getTipo().getCodigo() > 0) {
             view.getMitEnviarNotificacoes().setVisible(true);
         }
+        
+        // atualiza identificação do usuário no canto inferior direito
+        view.getLblIdentificacaoUsuario().setText(usuario.toString());
     }
     
     private void configuraView() {
@@ -72,7 +81,7 @@ public class SistemaPresenter {
         view.getMitVisualizarNotificacoes().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirJanela(new VisualizarNotificacoesPresenter(usuario, notificacoes));
+                abrirJanela(new VisualizarNotificacoesPresenter(usuario, notificacoesDeUsuario));
             }
         });
         

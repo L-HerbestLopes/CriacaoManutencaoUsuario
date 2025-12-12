@@ -4,6 +4,7 @@
  */
 package com.pss.criacaomanutencaousuarios.view;
 
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
@@ -30,6 +31,7 @@ public class SistemaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblIdentificacaoUsuario = new javax.swing.JLabel();
         mnbSistema = new javax.swing.JMenuBar();
         mnuUsuario = new javax.swing.JMenu();
         mnuNotificacoes = new javax.swing.JMenu();
@@ -38,6 +40,10 @@ public class SistemaView extends javax.swing.JFrame {
         mnuSistema = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblIdentificacaoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblIdentificacaoUsuario.setText("Aguardando login");
+        lblIdentificacaoUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         mnuUsuario.setText("Usuário");
         mnbSistema.add(mnuUsuario);
@@ -61,11 +67,17 @@ public class SistemaView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(650, Short.MAX_VALUE)
+                .addComponent(lblIdentificacaoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(733, Short.MAX_VALUE)
+                .addComponent(lblIdentificacaoUsuario)
+                .addContainerGap())
         );
 
         pack();
@@ -73,6 +85,7 @@ public class SistemaView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblIdentificacaoUsuario;
     private javax.swing.JMenuItem mitEnviarNotificacoes;
     private javax.swing.JMenuItem mitVisualizarNotificacoes;
     private javax.swing.JMenuBar mnbSistema;
@@ -91,5 +104,9 @@ public class SistemaView extends javax.swing.JFrame {
 
     public JMenuBar getMnbSistema() {
         return mnbSistema;
+    }
+
+    public JLabel getLblIdentificacaoUsuario() {
+        return lblIdentificacaoUsuario;
     }
 }
