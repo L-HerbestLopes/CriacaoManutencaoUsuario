@@ -2,18 +2,15 @@ package com.pss.criacaomanutencaousuarios.presenter;
 
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
-import com.pss.criacaomanutencaousuarios.view.ICadastroUsuarioView;
-import com.pss.criacaomanutencaousuarios.view.ILoginView;
+import com.pss.criacaomanutencaousuarios.view.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginPresenter {
-    private ILoginView view;
-    private UsuarioRepository usuario;
+    private LoginView view;
     
-    public LoginPresenter(ILoginView view, UsuarioRepository usuario){
-        this.view = view;
-        this.usuario = usuario;
+    public LoginPresenter(){
+        this.view = new LoginView();
         configuraView();
     }
     
@@ -42,14 +39,15 @@ public class LoginPresenter {
         }
     private void cancelar() {
         view.setVisible(false);
-        ICadastroUsuarioView cadastro = new CadastroUsuarioView();
-        new CadastroUsuarioPresenter(cadastro, this.usuario);
+        new CadastroUsuarioPresenter();
     }
     
     private void confirmar() {
         try{
-        //buscar usuario no banco
-        //usuarioRepository.buscar(usuario);
+            //TO DO
+        //buscar usuario no banco -> usuarioRepository.buscar(usuario);
+        //mostrar o sistema  SistemaPresenter sistema = SistemaPresenter.getInstancia();
+        //criar algo q identifique quem esta logado ssingleton chamada secao
         }
         catch(Exception ex){
             ex.printStackTrace();

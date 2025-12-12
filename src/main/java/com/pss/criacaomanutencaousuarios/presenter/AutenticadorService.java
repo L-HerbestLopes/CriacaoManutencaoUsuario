@@ -9,5 +9,5 @@ package com.pss.criacaomanutencaousuarios.presenter;
  * @author André
  */
 public class AutenticadorService {
-    
+    //logar()
 }

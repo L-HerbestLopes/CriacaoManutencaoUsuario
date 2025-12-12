@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
  */
-public class CadastroUsuarioView extends javax.swing.JFrame implements ICadastroUsuarioView {
+public class CadastroUsuarioView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroUsuarioView.class.getName());
     public CadastroUsuarioView() {
@@ -125,24 +125,24 @@ public class CadastroUsuarioView extends javax.swing.JFrame implements ICadastro
     // End of variables declaration//GEN-END:variables
 
     
-    @Override
+    
     public void addAcaoCadastrar(ActionListener acao) {
         this.btnCadastrar.addActionListener(acao); 
     }
     
-    @Override
+    
     public void addAcaoLogin(ActionListener acao) {
         this.btnLogin.addActionListener(acao);
     }
-    @Override
+    
     public String getTxtNome(){
         return txtNome.getText();
     }
-    @Override
+    
     public String getTxtSenha(){
         return txtSenha.getText();
     }
-    @Override
+    
     public String getTxtSenhaConfirmada(){
          return txtConfirmarSenha.getText();
     }
@@ -150,7 +150,7 @@ public class CadastroUsuarioView extends javax.swing.JFrame implements ICadastro
 //    public void setVisible(boolean visibilidade){
 //        this.setVisible(visibilidade);
 //    }
-    @Override
+    
     public void limparCampos(){
         txtNome.setText("");
         txtSenha.setText("");

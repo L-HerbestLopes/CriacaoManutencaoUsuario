@@ -49,8 +49,7 @@ public class Principal {
         sistema.setUsuario(repository.acharUsuario("Júlia"));
         sistema.recarregarView();
         
-        CadastroUsuarioView view = new CadastroUsuarioView();
-        new CadastroUsuarioPresenter(view);
+        new CadastroUsuarioPresenter();
     }
     
 	    

@@ -4,8 +4,7 @@ package com.pss.criacaomanutencaousuarios.presenter;
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
-import com.pss.criacaomanutencaousuarios.view.ICadastroUsuarioView;
-import com.pss.criacaomanutencaousuarios.view.ILoginView;
+import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import com.pss.criacaomanutencaousuarios.view.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,21 +15,17 @@ import java.time.LocalDate;
  */
 
 public class CadastroUsuarioPresenter {
-    private ICadastroUsuarioView view;
-    private UsuarioRepository repository;
+    private CadastroUsuarioView view;
     
     
-    public CadastroUsuarioPresenter(ICadastroUsuarioView view,UsuarioRepository repository) {
-        this.view = view;
-        this.repository = repository;
-        configuraView();
-    }
-    public CadastroUsuarioPresenter(ICadastroUsuarioView view) {
-        this.view = view;
+    
+    public CadastroUsuarioPresenter() {
+        this.view = new CadastroUsuarioView();
+
         configuraView();
     }
     
-    public ICadastroUsuarioView getView() {
+    public CadastroUsuarioView getView() {
         return view;
     }
     
@@ -63,12 +58,14 @@ public class CadastroUsuarioPresenter {
     private void cancelar() {
         view.limparCampos();
         view.setVisible(false);
-        ILoginView login = new LoginView();
-        new LoginPresenter(login, this.repository);
-        login.setVisible(true);
+        new LoginPresenter();
     }
     
     private void confirmar() {
+                                                        //TO DO
+                                                        
+                                                        
+    //MOSTRAR adicionado com sucedo (alert) joptionpane
     //if ( biblioteca verificadora de senhas aqui)
     // view.getTxtSenha(); e view.getTxtSenhaConfirmada();
     

@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class LoginView extends javax.swing.JFrame implements ILoginView{
+public class LoginView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginView.class.getName());
 
@@ -114,20 +114,20 @@ public class LoginView extends javax.swing.JFrame implements ILoginView{
     public static Logger getLogger() {
         return logger;
     }
-    @Override
+    
     public void acaoCadastrar(ActionListener acao) {
         this.btnCadastrar.addActionListener(acao);
     }
-    @Override
+    
     public void acaoLogin(ActionListener acao){
         this.btnLogin.addActionListener(acao);
     }
 
-    @Override
+    
     public String getNome(){
         return txtNome.getText();
     }
-    @Override
+    
     public String getSenha() {
         return txtSenha.getText();
     }

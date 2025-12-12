@@ -48,7 +48,8 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
         tblNotificacoes = new javax.swing.JTable();
         lblTitulo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jScrollPane1.setViewportView(tblNotificacoes);
 

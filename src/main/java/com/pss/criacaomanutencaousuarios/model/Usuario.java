@@ -10,7 +10,7 @@ public class Usuario {
     private String nome;
     private String senha;
     private TipoDeUsuarioEnum tipo;
-    private LocalDate dataRegistro;
+    private final LocalDate dataRegistro;
     private boolean ativo;
     
     
