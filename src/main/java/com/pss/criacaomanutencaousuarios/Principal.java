@@ -46,7 +46,7 @@ public class Principal {
                 "Guilherme", "silva2003", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
                         ));
         
-        sistema.setUsuario(repository.acharUsuario("Júlia"));
+        sistema.setUsuario(repository.buscarUsuario("Júlia"));
         sistema.recarregarView();
         
         new CadastroUsuarioPresenter();

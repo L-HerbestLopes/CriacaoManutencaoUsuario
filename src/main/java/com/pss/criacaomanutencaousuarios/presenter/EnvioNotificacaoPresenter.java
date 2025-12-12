@@ -92,7 +92,7 @@ public class EnvioNotificacaoPresenter implements JanelaPresenter {
         for(int i = 0; i < modelo.getRowCount(); i++) {
             if((boolean) modelo.getValueAt(i, 0)) {
                 String nome = modelo.getValueAt(i, 1).toString();
-                usuarios.add(this.usuarios.acharUsuario(nome));
+                usuarios.add(this.usuarios.buscarUsuario(nome));
             }
         }
         

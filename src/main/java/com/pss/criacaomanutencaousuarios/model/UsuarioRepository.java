@@ -21,18 +21,18 @@ public class UsuarioRepository {
         usuarios.remove(usuario);
     }
     
-    public Usuario acharUsuario(String nome) {
+    public Usuario buscarUsuario(String nome) {
         if(usuarios.isEmpty()) { /* throw exception */ }
         if(usuarios == null) { /* throw exception */ }
         
         for(Usuario usuario : usuarios) {
             if(usuario.getNome().equals(nome)) return usuario;
         }
-        
         return null;
     }
     
     public List<Usuario> getAll() {
         return usuarios;
     }
+    
 }
