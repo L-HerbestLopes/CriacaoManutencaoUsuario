@@ -14,12 +14,12 @@ import javax.swing.JTextField;
  *
  * @author André
  */
-public class PromoverUsuarioView extends javax.swing.JInternalFrame {
+public class ExcluirUsuarioView extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form PromoverUsuarioView
+     * Creates new form ExcluirUsuarioView
      */
-    public PromoverUsuarioView() {
+    public ExcluirUsuarioView() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPromover = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         lblPromoverUsuarios = new javax.swing.JLabel();
         txtUsuarios = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -41,16 +41,12 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        btnPromover.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnPromover.setText("Promover");
-        btnPromover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPromoverActionPerformed(evt);
-            }
-        });
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.setToolTipText("");
 
         lblPromoverUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblPromoverUsuarios.setText("Promover Usuarios");
+        lblPromoverUsuarios.setText("Excluir Usuarios");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -62,7 +58,7 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Insira o nome do Usuario que deseja promover:");
+        jLabel1.setText("Insira o nome do Usuario que deseja excluir:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,10 +69,10 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPromoverUsuarios)
-                    .addComponent(btnPromover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuarios)
                     .addComponent(txtNomeUsuario))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +86,7 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnPromover, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
@@ -101,13 +97,9 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeUsuarioActionPerformed
 
-    private void btnPromoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromoverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPromoverActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPromover;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPromoverUsuarios;
@@ -115,8 +107,8 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane txtUsuarios;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBtnPromover() {
-        return btnPromover;
+    public JButton getBtnExcluir() {
+        return btnExcluir;
     }
 
     public JLabel getjLabel1() {
@@ -142,6 +134,4 @@ public class PromoverUsuarioView extends javax.swing.JInternalFrame {
     public void setTxtUsuarios(JScrollPane txtUsuarios) {
         this.txtUsuarios = txtUsuarios;
     }
-
-
 }

@@ -27,11 +27,11 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                   <Component id="lblPromoverUsuarios" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPromover" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                  <Component id="btnExcluir" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
                   <Component id="txtUsuarios" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtNomeUsuario" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,30 +47,28 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="txtNomeUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnPromover" min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="btnExcluir" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnPromover">
+    <Component class="javax.swing.JButton" name="btnExcluir">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Promover"/>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPromoverActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPromoverUsuarios">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Promover Usuarios"/>
+        <Property name="text" type="java.lang.String" value="Excluir Usuarios"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="txtUsuarios">
@@ -95,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Insira o nome do Usuario que deseja promover:"/>
+        <Property name="text" type="java.lang.String" value="Insira o nome do Usuario que deseja excluir:"/>
       </Properties>
     </Component>
   </SubComponents>

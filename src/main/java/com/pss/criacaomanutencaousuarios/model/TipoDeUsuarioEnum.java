@@ -1,7 +1,7 @@
 package com.pss.criacaomanutencaousuarios.model;
 
 public enum TipoDeUsuarioEnum {
-   naoConfirmado(-1),usuarioComum(0), administrador(1), administradorPrincipal(2);
+   naoConfirmado(-1),usuarioComum(0), administrador(1), administradorPrincipal(2), excluido(3);
    
    private final int codigo;
 
