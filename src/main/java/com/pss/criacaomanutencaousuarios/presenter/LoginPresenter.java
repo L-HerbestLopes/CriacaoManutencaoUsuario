@@ -1,7 +1,7 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

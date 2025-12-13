@@ -1,6 +1,7 @@
-package com.pss.criacaomanutencaousuarios.temp;
+package com.css.criacaomanutencaousuarios.service;
 
 import com.pss.criacaomanutencaousuarios.model.*;
+import com.pss.criacaomanutencaousuarios.helper.AdministradorDePermissoesHelper;
 
 public class GerenciadorUsuarioService {
     private Usuario usuarioLogado;

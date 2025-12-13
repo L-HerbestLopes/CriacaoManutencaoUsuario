@@ -2,8 +2,8 @@ package com.pss.criacaomanutencaousuarios.presenter;
 
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
-import com.pss.criacaomanutencaousuarios.temp.AdministradorDePermissoesHelper;
+import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.helper.AdministradorDePermissoesHelper;
 import com.pss.criacaomanutencaousuarios.view.PromoverUsuarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

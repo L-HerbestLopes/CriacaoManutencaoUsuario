@@ -1,11 +1,11 @@
-package com.pss.criacaomanutencaousuarios.presenter;
+package com.css.criacaomanutencaousuarios.service;
 
 import com.pss.criacaomanutencaousuarios.model.Notificacao;
-import com.pss.criacaomanutencaousuarios.model.NotificacaoRepository;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
-import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
 

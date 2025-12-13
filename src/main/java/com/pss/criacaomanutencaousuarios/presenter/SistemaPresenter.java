@@ -1,9 +1,9 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
-import com.pss.criacaomanutencaousuarios.model.NotificacaoRepository;
-import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.SistemaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

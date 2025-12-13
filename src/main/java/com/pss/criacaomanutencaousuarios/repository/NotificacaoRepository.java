@@ -1,6 +1,7 @@
-package com.pss.criacaomanutencaousuarios.model;
+package com.pss.criacaomanutencaousuarios.repository;
 
 import com.pss.criacaomanutencaousuarios.database.DatabaseConnection;
+import com.pss.criacaomanutencaousuarios.model.Notificacao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

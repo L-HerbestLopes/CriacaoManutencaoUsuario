@@ -1,7 +1,8 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
+import com.css.criacaomanutencaousuarios.service.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
-import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.view.VisualizarNotificacoesView;
 import java.util.List;

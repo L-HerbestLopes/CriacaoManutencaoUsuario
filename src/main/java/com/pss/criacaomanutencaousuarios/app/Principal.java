@@ -1,4 +1,4 @@
-package com.pss.criacaomanutencaousuarios;
+package com.pss.criacaomanutencaousuarios.app;
 
 import com.pss.criacaomanutencaousuarios.database.DatabaseConnection;
 import com.pss.criacaomanutencaousuarios.database.NotificacaoTable;
@@ -8,14 +8,14 @@ import com.pss.criacaomanutencaousuarios.database.DatabaseInitializer;
 import com.pss.criacaomanutencaousuarios.database.TabelaDatabase;
 import com.pss.criacaomanutencaousuarios.database.TableInfo;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
-import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.presenter.EnvioNotificacaoPresenter;
 import com.pss.criacaomanutencaousuarios.presenter.CadastroUsuarioPresenter;
-import com.pss.criacaomanutencaousuarios.presenter.NotificacaoUsuarioService;
+import com.css.criacaomanutencaousuarios.service.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.presenter.SistemaPresenter;
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import java.util.List;
 import java.util.ArrayList;

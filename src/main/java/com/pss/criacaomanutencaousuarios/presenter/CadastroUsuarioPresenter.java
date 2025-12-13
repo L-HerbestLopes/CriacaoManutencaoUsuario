@@ -3,7 +3,7 @@ package com.pss.criacaomanutencaousuarios.presenter;
 
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import com.pss.senha.validacao.ValidadorSenha;
 import java.awt.event.ActionEvent;
