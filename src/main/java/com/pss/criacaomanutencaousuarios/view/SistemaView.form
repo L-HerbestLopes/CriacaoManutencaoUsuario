@@ -22,6 +22,16 @@
                 <Property name="label" type="java.lang.String" value="Trocar Senha"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mitAutenticarUsuarios">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Autenticar Usuarios"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mitPromoverUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Promover Usuario"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuNotificacoes">

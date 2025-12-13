@@ -134,4 +134,23 @@ public class UsuarioRepository {
         
         return u;
     }
+    // Em UsuarioRepository.java
+
+public void atualizarUsuario(Usuario usuario) {
+    String sql = "UPDATE usuarios SET senha=?, tipo=?, ativo=? WHERE nome=?";
+    
+    try (Connection conn = DatabaseConnection.connect();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        
+        pstmt.setString(1, usuario.getSenha());
+        pstmt.setInt(2, usuario.getTipo().getCodigo());
+        pstmt.setInt(3, usuario.getAtivo() ? 1 : 0);
+        pstmt.setString(4, usuario.getNome());
+        
+        pstmt.executeUpdate();
+        
+    } catch (SQLException e) {
+        System.err.println("Erro ao atualizar usuário: " + e.getMessage());
+    }
+}
 }

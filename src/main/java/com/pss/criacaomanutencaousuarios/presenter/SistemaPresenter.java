@@ -18,7 +18,7 @@ public class SistemaPresenter {
     private final SistemaView view;
     private static SistemaPresenter instancia;
     private Usuario usuario;
-    private UsuarioRepository usuarios;
+    private UsuarioRepository repository;
     private NotificacaoRepository notificacoes;
     private NotificacaoUsuarioRepository notificacoesDeUsuario;
     
@@ -37,7 +37,7 @@ public class SistemaPresenter {
     }
     
     public void setUsuarioRepository(UsuarioRepository repository) {
-        usuarios = repository;
+        this.repository = repository;
     }
     
     public void setNotificacoesRepository(NotificacaoRepository repository) {
@@ -79,7 +79,7 @@ public class SistemaPresenter {
         view.getMitEnviarNotificacoes().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirJanela(new EnvioNotificacaoPresenter(usuarios));
+                abrirJanela(new EnvioNotificacaoPresenter(repository));
             }
         });
         
@@ -91,23 +91,41 @@ public class SistemaPresenter {
         });
         
         view.getMitTrocarSenha().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (usuario != null) {
-                    abrirJanela(new AlterarSenhaPresenter(usuario));
-                }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (usuario != null) {
+                abrirJanela(new AlterarSenhaPresenter(usuario, repository));
             }
-        });
+        }
+    });
         
         view.getMitTrocarDeUsuario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 JOptionPane.showMessageDialog(null, "Usuario Desconectado", "Logout!", JOptionPane.INFORMATION_MESSAGE);
-                
-                new CadastroUsuarioPresenter(usuarios);
+                new CadastroUsuarioPresenter(repository);
                 view.setVisible(false);
             }
         });
+        view.getMitAutenticarUsuarios().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (usuario != null) {
+                    abrirJanela(new AutenticarUsuarioPresenter(usuario, repository));
+                }
+            }
+        });
+
+        
+         view.getMitPromoverUsuario().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (usuario != null) {
+                     abrirJanela(new PromoverUsuarioPresenter(usuario, repository));
+                }
+            }
+        });
+        
         
         view.getMitEnviarNotificacoes().setVisible(false);
         

@@ -31,6 +31,8 @@ public class SistemaView extends javax.swing.JFrame {
         mnuUsuario = new javax.swing.JMenu();
         mitTrocarDeUsuario = new javax.swing.JMenuItem();
         mitTrocarSenha = new javax.swing.JMenuItem();
+        mitAutenticarUsuarios = new javax.swing.JMenuItem();
+        mitPromoverUsuario = new javax.swing.JMenuItem();
         mnuNotificacoes = new javax.swing.JMenu();
         mitVisualizarNotificacoes = new javax.swing.JMenuItem();
         mitEnviarNotificacoes = new javax.swing.JMenuItem();
@@ -50,6 +52,12 @@ public class SistemaView extends javax.swing.JFrame {
 
         mitTrocarSenha.setLabel("Trocar Senha");
         mnuUsuario.add(mitTrocarSenha);
+
+        mitAutenticarUsuarios.setText("Autenticar Usuarios");
+        mnuUsuario.add(mitAutenticarUsuarios);
+
+        mitPromoverUsuario.setText("Promover Usuario");
+        mnuUsuario.add(mitPromoverUsuario);
 
         mnbSistema.add(mnuUsuario);
 
@@ -91,7 +99,9 @@ public class SistemaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblIdentificacaoUsuario;
+    private javax.swing.JMenuItem mitAutenticarUsuarios;
     private javax.swing.JMenuItem mitEnviarNotificacoes;
+    private javax.swing.JMenuItem mitPromoverUsuario;
     private javax.swing.JMenuItem mitTrocarDeUsuario;
     private javax.swing.JMenuItem mitTrocarSenha;
     private javax.swing.JMenuItem mitVisualizarNotificacoes;
@@ -123,6 +133,13 @@ public class SistemaView extends javax.swing.JFrame {
 
     public JMenuItem getMitTrocarSenha() {
         return mitTrocarSenha;
+    }
+    public JMenuItem getMitAutenticarUsuarios() {
+        return mitAutenticarUsuarios;
+    }
+
+    public JMenuItem getMitPromoverUsuario() {
+        return mitPromoverUsuario;
     }
 
 }

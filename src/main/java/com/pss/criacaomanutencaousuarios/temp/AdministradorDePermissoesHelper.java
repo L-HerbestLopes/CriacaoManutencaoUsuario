@@ -5,7 +5,7 @@ import com.pss.criacaomanutencaousuarios.model.*;
 
 
 public class AdministradorDePermissoesHelper {
-        
+                
         public boolean podeSerPromovido(Usuario usuario){
             return usuario.getTipo().equals(TipoDeUsuarioEnum.usuarioComum);
         }
