@@ -40,28 +40,28 @@ public class Principal {
         
         TableInfo.listTables(DatabaseConnection.connect());
         
-        SistemaPresenter sistema = SistemaPresenter.getInstancia();
+        //SistemaPresenter sistema = SistemaPresenter.getInstancia();
         
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<NotificacaoUsuario> notificacoes = new ArrayList<>();
         UsuarioRepository repository = new UsuarioRepository(usuarios);
-        sistema.setUsuarioRepository(repository);
-        sistema.setNotificacaoUsuarioRepository(new NotificacaoUsuarioRepository(notificacoes));
+        //sistema.setUsuarioRepository(repository);
+        //sistema.setNotificacaoUsuarioRepository(new NotificacaoUsuarioRepository(notificacoes));
         
-        repository.incluirUsuario(new Usuario(
-                "Marcos", "marcos123", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
-                        ));
-        repository.incluirUsuario(new Usuario(
-                "Júlia", "senhajulia", TipoDeUsuarioEnum.administrador, LocalDate.now()
-                        ));
-        repository.incluirUsuario(new Usuario(
-                "Guilherme", "silva2003", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
-                        ));
+//        repository.incluirUsuario(new Usuario(
+//                "Marcos", "marcos123", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
+//                        ));
+//        repository.incluirUsuario(new Usuario(
+//                "Júlia", "senhajulia", TipoDeUsuarioEnum.administrador, LocalDate.now()
+//                        ));
+//        repository.incluirUsuario(new Usuario(
+//                "Guilherme", "silva2003", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
+//                        ));
         
-        sistema.setUsuario(repository.buscarUsuario("Júlia"));
-        sistema.recarregarView();
+        //sistema.setUsuario(repository.buscarUsuario("Júlia"));
+        //sistema.recarregarView();
         
-        new CadastroUsuarioPresenter();
+        new CadastroUsuarioPresenter(repository);
     }
     
 }

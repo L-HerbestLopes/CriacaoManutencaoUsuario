@@ -21,9 +21,10 @@ public class SistemaPresenter {
     private NotificacaoRepository notificacoes;
     private NotificacaoUsuarioRepository notificacoesDeUsuario;
     
-    private SistemaPresenter() {
-        view = new SistemaView();
+    public SistemaPresenter() {
+        this.view = new SistemaView();
         configuraView();
+        
         
         // inicialização de outras coisas junto ao construtor
         // usuario se mantém null até autenticação/cadastro
@@ -58,7 +59,7 @@ public class SistemaPresenter {
         view.add(janelaView);
     }
     
-    public void recarregarView() {
+    public void carregarView() {
         view.getMnbSistema().setVisible(true);
         
         // testa para o tipo de usuário se funcionalidades podem aparecer na interface
@@ -71,6 +72,7 @@ public class SistemaPresenter {
     }
     
     private void configuraView() {
+        carregarView();
         view.getMitEnviarNotificacoes().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
