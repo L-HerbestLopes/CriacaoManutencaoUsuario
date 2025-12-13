@@ -1,5 +1,6 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
+import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
@@ -62,20 +63,32 @@ public class SistemaPresenter {
         view.setVisible(true);
         view.getMnbSistema().setVisible(true);
         
+        // esconde todas as funcionalidades para que decida quais serão mostradas depois
+        view.getMitEnviarNotificacoes().setVisible(false);
+        view.getMitAutenticarUsuarios().setVisible(false);
+        view.getMitPromoverUsuario().setVisible(false);
+        
+        view.getMitVisualizarNotificacoes().setVisible(false);
+        
         if (usuario != null) {
-            if(usuario.getTipo().getCodigo() > 0) {
-                view.getMitEnviarNotificacoes().setVisible(true);
-            }
-            
             view.getLblIdentificacaoUsuario().setText(usuario.toString());
         } else {
             view.getLblIdentificacaoUsuario().setText("Aguardando login");
-            view.getMitEnviarNotificacoes().setVisible(false);
+        }
+        
+        // expor funcionalidades apenas para usuários com acesso
+        if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.administrador.getCodigo()) {
+            view.getMitEnviarNotificacoes().setVisible(true);
+            view.getMitAutenticarUsuarios().setVisible(true);
+            view.getMitPromoverUsuario().setVisible(true);
+        }
+        
+        if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.usuarioComum.getCodigo()) {
+            view.getMitVisualizarNotificacoes().setVisible(true);
         }
     }
     
     private void configuraView() {
-        carregarView();
         view.getMitEnviarNotificacoes().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -126,11 +139,7 @@ public class SistemaPresenter {
             }
         });
         
-        
-        view.getMitEnviarNotificacoes().setVisible(false);
-        
         view.getMnbSistema().setVisible(false);
-        view.setVisible(true);
     }
     
     

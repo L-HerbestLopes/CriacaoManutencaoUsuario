@@ -64,8 +64,7 @@ public class LoginPresenter {
                 
 
                 view.setVisible(false);
-                if(usuarioEncontrado.getAtivo())
-                    sistema.carregarView();
+                sistema.carregarView();
             
             } else {
                 System.out.println("Usuário ou senha incorretos");
