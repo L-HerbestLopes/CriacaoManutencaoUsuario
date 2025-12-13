@@ -8,10 +8,13 @@ import java.awt.event.ActionListener;
 
 public class LoginPresenter {
     private LoginView view;
+    private UsuarioRepository repository;
     
-    public LoginPresenter(){
+    public LoginPresenter(UsuarioRepository repository){
         this.view = new LoginView();
+        this.repository = repository;
         configuraView();
+        
     }
     
     private void configuraView(){
@@ -39,7 +42,7 @@ public class LoginPresenter {
         }
     private void cancelar() {
         view.setVisible(false);
-        new CadastroUsuarioPresenter();
+        new CadastroUsuarioPresenter(repository);
     }
     
     private void confirmar() {

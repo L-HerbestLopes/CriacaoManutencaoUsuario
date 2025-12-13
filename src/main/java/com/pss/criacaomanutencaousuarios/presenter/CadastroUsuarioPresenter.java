@@ -25,10 +25,6 @@ public class CadastroUsuarioPresenter {
         this.repository = repository;
         configuraView();
     }
-    public CadastroUsuarioPresenter() {
-        this.view = new CadastroUsuarioView();
-        configuraView();
-    }
     
     public CadastroUsuarioView getView() {
         return view;
@@ -65,7 +61,7 @@ public class CadastroUsuarioPresenter {
     private void cancelar() {
         view.limparCampos();
         view.setVisible(false);
-        new LoginPresenter();
+        new LoginPresenter(repository);
     }
     
     private void confirmar() {
@@ -81,35 +77,39 @@ public class CadastroUsuarioPresenter {
             return;
         }
         
-        if(/*view.getTxtNome() == "" || */view.getTxtNome().length() < 2){
-            System.err.println("Nome invalido!");
-                JOptionPane.showMessageDialog(null, "Informe um nome válido", "Erro!", JOptionPane.ERROR_MESSAGE);
+        if(repository.buscarUsuario(view.getTxtNome()) != null){
+            JOptionPane.showMessageDialog(null, "Já existe usuário com esse nome!", "Erro!", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
         if(!view.getTxtSenha().equals(view.getTxtSenhaConfirmada())) {
             System.err.println("Senhas fornecidas são diferentes!");
                 JOptionPane.showMessageDialog(null, "As senhas fornecidas são diferentes", "Erro!", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if(view.getTxtNome().equals(repository.buscarUsuario(view.getTxtNome()))){
+        if(repository.buscarUsuario(view.getTxtNome()) != null){
             System.err.println("Já existe usuario com esse nome!");
-                JOptionPane.showMessageDialog(null, "Já existe usuario com esse nome, informe um nome diferente!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Já existe usuário com esse nome!", "Erro!", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+
+        Usuario novoUsuario;
+        SistemaPresenter sistema = SistemaPresenter.getInstancia();
+
         if(repository.listaVazia()){
-            Usuario usuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.administradorPrincipal, LocalDate.now());
-            repository.incluirUsuario(usuario);
-            JOptionPane.showMessageDialog(null, "Administrador criado com sucesso!", "", JOptionPane.INFORMATION_MESSAGE);
+            novoUsuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.administradorPrincipal, LocalDate.now());
+            JOptionPane.showMessageDialog(null, "Administrador criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
-            Usuario usuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.naoConfirmado, LocalDate.now());
-            repository.incluirUsuario(usuario);
-            JOptionPane.showMessageDialog(null, "Usuário criado com sucesso! Aguardando confirmação", "", JOptionPane.INFORMATION_MESSAGE);
+            novoUsuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.naoConfirmado, LocalDate.now());
+            JOptionPane.showMessageDialog(null, "Usuário criado com sucesso! Aguardando confirmação", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
         
-        
-            
+        repository.incluirUsuario(novoUsuario);
+        sistema.setUsuario(novoUsuario);
+        view.setVisible(false);
+        sistema.carregarView();
+         
         //MOSTRAR adicionado com sucedo (alert) joptionpane
         // view.getTxtSenha(); e view.getTxtSenhaConfirmada();
     
@@ -120,8 +120,7 @@ public class CadastroUsuarioPresenter {
         //usuarioRepository.cadastrar(novoUsuario);
         //JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!", "Criado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
         //System.out.println("Validação do usuário '" + view.getName() + "'solicitado, aguardando confirmação"); 
-        view.setVisible(false);
-        new SistemaPresenter();
+        
         //view.carregarView();
     }
 
