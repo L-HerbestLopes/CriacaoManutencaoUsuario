@@ -59,6 +59,7 @@ public class SistemaPresenter {
     }
     
     public void carregarView() {
+        view.setVisible(true);
         view.getMnbSistema().setVisible(true);
         
         if (usuario != null) {

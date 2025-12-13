@@ -31,22 +31,19 @@ import java.time.LocalDate;
 public class Principal {
 
     public static void main(String[] args) {
-        List<TabelaDatabase> tabelas = new ArrayList<>();
-        tabelas.add(new UsuarioTable());
-        tabelas.add(new NotificacaoTable());
-        tabelas.add(new NotificacaoUsuarioTable());
-        DatabaseInitializer databaseInitializer = new DatabaseInitializer(tabelas);
-        databaseInitializer.inicializar();
         
-        TableInfo.listTables(DatabaseConnection.connect());
+//        List<TabelaDatabase> tabelas = 
+          new DatabaseInitializer();
+//        databaseInitializer.inicializar();
+//        TableInfo.listTables(DatabaseConnection.connect());
         
-        SistemaPresenter sistema = SistemaPresenter.getInstancia();
-        
+      
+            SistemaPresenter sistema = SistemaPresenter.getInstancia();
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<NotificacaoUsuario> notificacoes = new ArrayList<>();
-        UsuarioRepository repository = new UsuarioRepository(usuarios);
-        sistema.setUsuarioRepository(repository);
-        sistema.setNotificacaoUsuarioRepository(new NotificacaoUsuarioRepository(notificacoes));
+        UsuarioRepository repository = new UsuarioRepository();
+            sistema.setUsuarioRepository(repository);
+            sistema.setNotificacaoUsuarioRepository(new NotificacaoUsuarioRepository(notificacoes));
 //                repository.incluirUsuario(new Usuario(
 //                "Marcos", "marcos123", TipoDeUsuarioEnum.usuarioComum, LocalDate.now()
 //                       ));
@@ -58,6 +55,8 @@ public class Principal {
 //        
 //        sistema.setUsuario(repository.buscarUsuario("Júlia"));
 //        sistema.carregarView();
+
+//UNICAS COISAS QUE TEM Q TER NA MAIN   
         
         new CadastroUsuarioPresenter(repository);
     }

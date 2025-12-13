@@ -2,7 +2,6 @@ package com.pss.criacaomanutencaousuarios.presenter;
 
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
-import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import com.pss.criacaomanutencaousuarios.view.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,7 +52,6 @@ public class LoginPresenter {
         //mostrar o sistema  SistemaPresenter sistema = SistemaPresenter.getInstancia();
         //criar algo q identifique quem esta logado ssingleton chamada secao
         
-        
             String nome = view.getNome();
             String senha = view.getSenha();
 
@@ -61,18 +59,36 @@ public class LoginPresenter {
 
             // 2. Valida a senha
             if (usuarioEncontrado != null && usuarioEncontrado.getSenha().equals(senha)) {
-
-                
                 SistemaPresenter sistema = SistemaPresenter.getInstancia();
                 sistema.setUsuario(usuarioEncontrado);
+                
 
                 view.setVisible(false);
-
-                sistema.carregarView(); 
+                if(usuarioEncontrado.getAtivo())
+                    sistema.carregarView();
             
             } else {
                 System.out.println("Usuário ou senha incorretos");
             }
+            if (usuarioEncontrado != null && usuarioEncontrado.getSenha().equals(senha)) {
+    
+    if (usuarioEncontrado.getAtivo()) {
+        SistemaPresenter sistema = SistemaPresenter.getInstancia();
+        sistema.setUsuario(usuarioEncontrado);
+        
+        view.setVisible(false); 
+        sistema.carregarView(); 
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(view, 
+            "Seu cadastro ainda está pendente de aprovação.", 
+            "Acesso Negado", 
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        view.setVisible(true);
+    }
+
+} else {
+    System.out.println("Usuário ou senha incorretos");
+}
         } catch(Exception ex) {
             ex.printStackTrace();
         }

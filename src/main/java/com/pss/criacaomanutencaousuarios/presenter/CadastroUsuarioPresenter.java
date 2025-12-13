@@ -97,6 +97,7 @@ public class CadastroUsuarioPresenter {
 
         if(repository.listaVazia()){
             novoUsuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.administradorPrincipal, LocalDate.now());
+            novoUsuario.setAtivo(true);
             JOptionPane.showMessageDialog(null, "Administrador principal criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             
         }
@@ -109,7 +110,8 @@ public class CadastroUsuarioPresenter {
         repository.incluirUsuario(novoUsuario);
         sistema.setUsuario(novoUsuario);
         view.setVisible(false);
-        sistema.carregarView();
+        new LoginPresenter(this.repository);
+        //sistema.carregarView();
          
         //MOSTRAR adicionado com sucedo (alert) joptionpane
         // view.getTxtSenha(); e view.getTxtSenhaConfirmada();

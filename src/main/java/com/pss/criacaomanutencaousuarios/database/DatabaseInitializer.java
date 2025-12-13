@@ -3,14 +3,19 @@ package com.pss.criacaomanutencaousuarios.database;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseInitializer {
     
     private final List<TabelaDatabase> tabelas;
 
-    public DatabaseInitializer(List<TabelaDatabase> tabelas) {
-        this.tabelas = tabelas;
+    public DatabaseInitializer() {
+        this.tabelas = new ArrayList<>();
+        tabelas.add(new UsuarioTable());
+        tabelas.add(new NotificacaoTable());
+        tabelas.add(new NotificacaoUsuarioTable());
+        this.inicializar();
     }
 
     public void inicializar() {
