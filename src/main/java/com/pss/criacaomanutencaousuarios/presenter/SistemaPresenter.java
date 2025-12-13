@@ -8,6 +8,7 @@ import com.pss.criacaomanutencaousuarios.view.SistemaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Classe presenter singleton que lida com o sistema/desktop principal do MDI
@@ -25,7 +26,6 @@ public class SistemaPresenter {
         this.view = new SistemaView();
         configuraView();
         
-        
         // inicialização de outras coisas junto ao construtor
         // usuario se mantém null até autenticação/cadastro
         // a referência a usuário é passada para janelas filhas mesmo se ainda for null
@@ -33,7 +33,6 @@ public class SistemaPresenter {
     
     public static SistemaPresenter getInstancia() {
         if (instancia == null) instancia = new SistemaPresenter();
-        
         return instancia;
     }
     
@@ -62,13 +61,16 @@ public class SistemaPresenter {
     public void carregarView() {
         view.getMnbSistema().setVisible(true);
         
-        // testa para o tipo de usuário se funcionalidades podem aparecer na interface
-        if(usuario.getTipo().getCodigo() > 0) {
-            view.getMitEnviarNotificacoes().setVisible(true);
+        if (usuario != null) {
+            if(usuario.getTipo().getCodigo() > 0) {
+                view.getMitEnviarNotificacoes().setVisible(true);
+            }
+            
+            view.getLblIdentificacaoUsuario().setText(usuario.toString());
+        } else {
+            view.getLblIdentificacaoUsuario().setText("Aguardando login");
+            view.getMitEnviarNotificacoes().setVisible(false);
         }
-        
-        // atualiza identificação do usuário no canto inferior direito
-        view.getLblIdentificacaoUsuario().setText(usuario.toString());
     }
     
     private void configuraView() {
@@ -87,9 +89,30 @@ public class SistemaPresenter {
             }
         });
         
+        view.getMitTrocarSenha().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (usuario != null) {
+                    abrirJanela(new AlterarSenhaPresenter(usuario));
+                }
+            }
+        });
+        
+        view.getMitTrocarDeUsuario().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                JOptionPane.showMessageDialog(null, "Usuario Desconectado", "Logout!", JOptionPane.INFORMATION_MESSAGE);
+                
+                new CadastroUsuarioPresenter(usuarios);
+                view.setVisible(false);
+            }
+        });
+        
         view.getMitEnviarNotificacoes().setVisible(false);
         
         view.getMnbSistema().setVisible(false);
         view.setVisible(true);
     }
+    
+    
 }

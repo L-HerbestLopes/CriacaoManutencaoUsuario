@@ -69,18 +69,12 @@ public class CadastroUsuarioPresenter {
         ValidadorSenha validador = new ValidadorSenha();
         List<String> resultado = validador.validar(view.getTxtSenha());
         
-        // falha caso validar retorne alguma string indicando erro
         if(!resultado.isEmpty()) {
-            
             System.err.println(resultado.get(0));
             JOptionPane.showMessageDialog(null,resultado.get(0), "Erro!", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        if(repository.buscarUsuario(view.getTxtNome()) != null){
-            JOptionPane.showMessageDialog(null, "Já existe usuário com esse nome!", "Erro!", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
         if(!view.getTxtSenha().equals(view.getTxtSenhaConfirmada())) {
             System.err.println("Senhas fornecidas são diferentes!");
                 JOptionPane.showMessageDialog(null, "As senhas fornecidas são diferentes", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -91,6 +85,11 @@ public class CadastroUsuarioPresenter {
             JOptionPane.showMessageDialog(null, "Já existe usuário com esse nome!", "Erro!", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        if(view.getTxtNome().length() < 2){
+            System.err.println("Insira um nome válido!");
+            JOptionPane.showMessageDialog(null, "Insira um nome válido!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
 
         Usuario novoUsuario;
@@ -98,11 +97,13 @@ public class CadastroUsuarioPresenter {
 
         if(repository.listaVazia()){
             novoUsuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.administradorPrincipal, LocalDate.now());
-            JOptionPane.showMessageDialog(null, "Administrador criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Administrador principal criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
         }
         else{
             novoUsuario = new Usuario(view.getTxtNome(), view.getTxtSenha(), TipoDeUsuarioEnum.naoConfirmado, LocalDate.now());
             JOptionPane.showMessageDialog(null, "Usuário criado com sucesso! Aguardando confirmação", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            
         }
         
         repository.incluirUsuario(novoUsuario);

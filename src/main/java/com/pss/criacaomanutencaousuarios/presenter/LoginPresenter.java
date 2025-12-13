@@ -1,5 +1,6 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
+import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.model.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.CadastroUsuarioView;
 import com.pss.criacaomanutencaousuarios.view.LoginView;
@@ -51,10 +52,29 @@ public class LoginPresenter {
         //buscar usuario no banco -> usuarioRepository.buscar(usuario);
         //mostrar o sistema  SistemaPresenter sistema = SistemaPresenter.getInstancia();
         //criar algo q identifique quem esta logado ssingleton chamada secao
-        }
-        catch(Exception ex){
+        
+        
+            String nome = view.getNome();
+            String senha = view.getSenha();
+
+            Usuario usuarioEncontrado = repository.buscarUsuario(nome);
+
+            // 2. Valida a senha
+            if (usuarioEncontrado != null && usuarioEncontrado.getSenha().equals(senha)) {
+
+                
+                SistemaPresenter sistema = SistemaPresenter.getInstancia();
+                sistema.setUsuario(usuarioEncontrado);
+
+                view.setVisible(false);
+
+                sistema.carregarView(); 
+            
+            } else {
+                System.out.println("Usuário ou senha incorretos");
+            }
+        } catch(Exception ex) {
             ex.printStackTrace();
         }
-        view.setVisible(false);
     }
-}
+}     
