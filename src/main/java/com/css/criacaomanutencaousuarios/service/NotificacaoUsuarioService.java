@@ -8,6 +8,7 @@ import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
@@ -29,6 +30,9 @@ public class NotificacaoUsuarioService {
             // notificacoesUsuario.incluirNotificacaoUsuario(notificacaoUsuario);
             
             // por enquanto, print para debug:
+            
+            JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso", "Mensagem Enviada!", JOptionPane.INFORMATION_MESSAGE);
+                
             System.out.println(
                     "Notificação enviada para " + notificacaoUsuario.getUsuario().getNome() + ": \"" +
                     notificacaoUsuario.getNotificacao().getMessage() + "\""

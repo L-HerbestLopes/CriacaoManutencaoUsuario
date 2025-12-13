@@ -157,4 +157,5 @@ public class CadastroUsuarioView extends javax.swing.JFrame {
         txtSenha.setText("");
         txtConfirmarSenha.setText("");
     }
+    
 }

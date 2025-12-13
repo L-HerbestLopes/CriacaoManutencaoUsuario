@@ -67,11 +67,17 @@ public class SistemaPresenter {
         view.getMitEnviarNotificacoes().setVisible(false);
         view.getMitAutenticarUsuarios().setVisible(false);
         view.getMitPromoverUsuario().setVisible(false);
+        view.getMitExcluirUsuario().setVisible(false);
+        view.getMnuSistema().setVisible(false);
         
         view.getMitVisualizarNotificacoes().setVisible(false);
         
         if (usuario != null) {
-            view.getLblIdentificacaoUsuario().setText(usuario.toString());
+             view.getLblIdentificacaoUsuario().setText(usuario.toString());
+            
+             //TO DO     arrumar a linha de baixo para mostrar quantas notificacoes o usuario tem
+             //view.getBtnNotificacoes().setText("["+notificacoesDeUsuario.getNotificacoes(usuario, notificacoes).size()+"]" + "Notificaçao(oes)");
+            
         } else {
             view.getLblIdentificacaoUsuario().setText("Aguardando login");
         }
@@ -85,6 +91,10 @@ public class SistemaPresenter {
         
         if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.usuarioComum.getCodigo()) {
             view.getMitVisualizarNotificacoes().setVisible(true);
+        }
+        if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.administradorPrincipal.getCodigo()){
+            view.getMitExcluirUsuario().setVisible(true);
+            view.getMnuSistema().setVisible(true);
         }
     }
     
@@ -138,6 +148,34 @@ public class SistemaPresenter {
                 }
             }
         });
+         view.getMitExcluirUsuario().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (usuario != null) {
+                     abrirJanela(new ExcluirUsuarioPresenter(usuario, repository));
+                }
+            }
+        });
+         view.getMitCSV().addActionListener(new ActionListener(){
+             @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Tipo de log definido como CSV", "LOG", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+         });
+         view.getMitJSON().addActionListener(new ActionListener(){
+             @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Tipo de log definido como JSON", "LOG", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+         });
+         view.getBtnNotificacoes().addActionListener(new ActionListener(){
+             @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirJanela(new VisualizarNotificacoesPresenter(usuario, notificacoesDeUsuario));
+            }
+         });
         
         view.getMnbSistema().setVisible(false);
     }
