@@ -5,6 +5,8 @@ import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.view.VisualizarNotificacoesView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
@@ -36,6 +38,42 @@ public class VisualizarNotificacoesPresenter implements JanelaPresenter {
     private void configuraView() {
         carregarNotificacoes(view.getTblNotificacoes());
         
+        view.getBtnMarcarTodas().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel modelo = (DefaultTableModel) view.getTblNotificacoes().getModel();
+                
+                for(int i = 0; i < modelo.getRowCount(); i++) {
+                    modelo.setValueAt(true, i, 1);
+                }
+            }
+        });
+        
+        view.getBtnConcluir().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel modelo = (DefaultTableModel) view.getTblNotificacoes().getModel();
+                List<NotificacaoUsuario> notificacoesCarregadas = notificacaoService.getNotificacoes(usuario, notificacoes);
+
+                for(int i = 0; i < modelo.getRowCount(); i++) {
+                    boolean isSelected = (boolean) modelo.getValueAt(i, 1);
+
+                    if (isSelected) {
+                         String mensagemTabela = (String) modelo.getValueAt(i, 0);
+
+                         for(NotificacaoUsuario notificacao : notificacoesCarregadas) {
+                            if(mensagemTabela.equals(notificacao.getNotificacao().getMessage())) {
+
+                                notificacao.marcarLida();
+                                notificacoes.atualizarNotificacaoUsuario(notificacao);
+                            }
+                        }
+                    }
+                }
+                view.dispose();
+            }
+        });
+        
         view.setVisible(true);
     }
     
@@ -46,6 +84,7 @@ public class VisualizarNotificacoesPresenter implements JanelaPresenter {
         List<NotificacaoUsuario> notificacoes = notificacaoService.getNotificacoes(usuario, this.notificacoes);
         
         for(NotificacaoUsuario notificacao : notificacoes) {
+            if(!notificacao.foiLida())
             modelo.addRow(new Object[] {
                 notificacao.getNotificacao().getMessage(), false
             });
