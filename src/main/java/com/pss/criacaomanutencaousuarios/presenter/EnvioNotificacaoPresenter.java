@@ -3,6 +3,7 @@ package com.pss.criacaomanutencaousuarios.presenter;
 import com.css.criacaomanutencaousuarios.service.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.model.Notificacao;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
+import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.EnvioNotificacaoView;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,10 +20,12 @@ public class EnvioNotificacaoPresenter implements JanelaPresenter {
     private EnvioNotificacaoView view;
     private UsuarioRepository usuarios;
     private NotificacaoUsuarioService notificacaoService;
+    private NotificacaoUsuarioRepository notificacoes;
     
-    public EnvioNotificacaoPresenter(UsuarioRepository usuarios) {
+    public EnvioNotificacaoPresenter(UsuarioRepository usuarios, NotificacaoUsuarioRepository notificacoes) {
         this.usuarios = usuarios;
         this.notificacaoService = new NotificacaoUsuarioService();
+        this.notificacoes = notificacoes;
         view = new EnvioNotificacaoView();
         
         configuraView();
@@ -97,7 +101,8 @@ public class EnvioNotificacaoPresenter implements JanelaPresenter {
             }
         }
         
-        notificacaoService.EnviarNotificacao(usuarios, notificacao);
+        notificacaoService.EnviarNotificacao(usuarios, notificacao, notificacoes);
+        JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso", "Mensagem Enviada!", JOptionPane.INFORMATION_MESSAGE);
     }
     
     private void cancelar() {

@@ -1,5 +1,6 @@
 package com.pss.criacaomanutencaousuarios.presenter;
 
+import com.css.criacaomanutencaousuarios.service.NotificacaoUsuarioService;
 import com.pss.criacaomanutencaousuarios.model.TipoDeUsuarioEnum;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
@@ -76,7 +77,7 @@ public class SistemaPresenter {
              view.getLblIdentificacaoUsuario().setText(usuario.toString());
             
              //TO DO     arrumar a linha de baixo para mostrar quantas notificacoes o usuario tem
-             //view.getBtnNotificacoes().setText("["+notificacoesDeUsuario.getNotificacoes(usuario, notificacoes).size()+"]" + "Notificaçao(oes)");
+             view.getBtnNotificacoes().setText(new NotificacaoUsuarioService().getNotificacoes(usuario, notificacoesDeUsuario).size() + " Notificaçao(oes)");
             
         } else {
             view.getLblIdentificacaoUsuario().setText("Aguardando login");
@@ -102,7 +103,7 @@ public class SistemaPresenter {
         view.getMitEnviarNotificacoes().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirJanela(new EnvioNotificacaoPresenter(repository));
+                abrirJanela(new EnvioNotificacaoPresenter(repository, notificacoesDeUsuario));
             }
         });
         

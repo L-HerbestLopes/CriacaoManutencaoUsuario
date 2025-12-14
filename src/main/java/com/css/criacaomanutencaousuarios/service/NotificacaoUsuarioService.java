@@ -1,28 +1,18 @@
 package com.css.criacaomanutencaousuarios.service;
 
 import com.pss.criacaomanutencaousuarios.model.Notificacao;
-import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.model.NotificacaoUsuario;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
-import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
  */
 public class NotificacaoUsuarioService {
-    private UsuarioRepository usuarios;
-    private NotificacaoRepository notificacoes;
-    private NotificacaoUsuarioRepository notificacoesUsuario;
     
-    public NotificacaoUsuarioService() {
-        // ...
-    }
-    
-    public void EnviarNotificacao(List<Usuario> usuarios, Notificacao notificacao) {
+    public void EnviarNotificacao(List<Usuario> usuarios, Notificacao notificacao, NotificacaoUsuarioRepository notificacoesUsuario) {
         
         for(Usuario usuario : usuarios) {
             NotificacaoUsuario notificacaoUsuario = new NotificacaoUsuario(notificacao, usuario);
@@ -30,13 +20,13 @@ public class NotificacaoUsuarioService {
             // notificacoesUsuario.incluirNotificacaoUsuario(notificacaoUsuario);
             
             // por enquanto, print para debug:
-            
-            JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso", "Mensagem Enviada!", JOptionPane.INFORMATION_MESSAGE);
-                
+                            
             System.out.println(
                     "Notificação enviada para " + notificacaoUsuario.getUsuario().getNome() + ": \"" +
                     notificacaoUsuario.getNotificacao().getMessage() + "\""
             );
+            
+            notificacoesUsuario.incluirNotificacaoUsuario(notificacaoUsuario);
         }
     }
     
@@ -44,7 +34,8 @@ public class NotificacaoUsuarioService {
         List<NotificacaoUsuario> notificacoesSaida = new ArrayList<>();
         
         for(NotificacaoUsuario notificacao : repository.getAll()) {
-            if(notificacao.getUsuario().equals(usuario)) {
+            System.out.println("notificacao encontrada: " + notificacao.getNotificacao().getMessage() + " para " + notificacao.getUsuario().getNome());
+            if(notificacao.getUsuario().getNome().equals(usuario.getNome())) {
                 notificacoesSaida.add(notificacao);
             }
         }

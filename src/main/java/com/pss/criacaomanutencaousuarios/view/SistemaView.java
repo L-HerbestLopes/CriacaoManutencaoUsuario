@@ -83,7 +83,7 @@ public class SistemaView extends javax.swing.JFrame {
 
         mnuSistema.setText("Sistema");
 
-        mitCSV.setText("Difinir Log como CSV");
+        mitCSV.setText("Definir Log como CSV");
         mnuSistema.add(mitCSV);
 
         mitJSON.setText("Definir Log como JSON");

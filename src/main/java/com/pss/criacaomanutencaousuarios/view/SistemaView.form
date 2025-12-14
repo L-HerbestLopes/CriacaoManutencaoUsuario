@@ -63,7 +63,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mitCSV">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Difinir Log como CSV"/>
+                <Property name="text" type="java.lang.String" value="Definir Log como CSV"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mitJSON">
