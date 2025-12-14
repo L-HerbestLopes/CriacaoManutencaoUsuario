@@ -145,6 +145,7 @@ public class NotificacaoUsuarioRepository {
                 
                 // 3. Criar objeto de vínculo (assumindo que existe esse construtor)
                 NotificacaoUsuario nu = new NotificacaoUsuario(n, u);
+                if(rs.getInt("lida") == 1) nu.marcarLida();
                 // Se tiver campo 'lida', poderia setar aqui: nu.setLida(rs.getInt("lida") == 1);
                 
                 lista.add(nu);
@@ -183,5 +184,36 @@ public class NotificacaoUsuarioRepository {
         Usuario u = new Usuario(nome, senha, tipoEnum, dataRegistro);
         u.setAtivo(ativo);
         return u;
+    }
+    
+    public void atualizarNotificacaoUsuario(NotificacaoUsuario notificacaoUsuario) {
+        // SQL para atualizar o campo 'lida' buscando pelos IDs através do nome/mensagem
+        String sql = """
+            UPDATE notificacoes_usuarios
+            SET lida = ?
+            WHERE id_usuario = (SELECT id FROM usuarios WHERE nome = ?)
+            AND id_notificacao = (SELECT id FROM notificacoes WHERE mensagem = ?)
+        """;
+
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // 1. Define o valor de Lida (1 para true, 0 para false)
+            pstmt.setInt(1, notificacaoUsuario.foiLida() ? 1 : 0);
+
+            // 2. Define os parâmetros para encontrar o registro correto (WHERE)
+            pstmt.setString(2, notificacaoUsuario.getUsuario().getNome());
+            pstmt.setString(3, notificacaoUsuario.getNotificacao().getMessage());
+
+            int linhasAfetadas = pstmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Status da notificação atualizado para lida=" + notificacaoUsuario.foiLida());
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar notificação: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

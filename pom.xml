@@ -29,6 +29,12 @@
 	    <artifactId>validadorsenha</artifactId>
 	    <version>master-SNAPSHOT</version>
 	</dependency>
+        
+	<dependency>
+	    <groupId>com.github.L-HerbestLopes</groupId>
+	    <artifactId>UsuarioLogger</artifactId>
+	    <version>1.0.2</version>
+	</dependency>
     </dependencies>
 
 

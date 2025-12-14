@@ -1,5 +1,6 @@
 package com.pss.criacaomanutencaousuarios.view;
 
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,7 +33,7 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
         };
         
         tblNotificacoes.setModel(model);
-        tblNotificacoes.getColumnModel().getColumn(1).setMaxWidth(80);
+        tblNotificacoes.getColumnModel().getColumn(1).setMaxWidth(120);
     }
 
     /**
@@ -47,6 +48,8 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNotificacoes = new javax.swing.JTable();
         lblTitulo = new javax.swing.JLabel();
+        btnMarcarTodas = new javax.swing.JButton();
+        btnConcluir = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -54,6 +57,20 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblNotificacoes);
 
         lblTitulo.setText("Visualizar Notificações:");
+
+        btnMarcarTodas.setText("Marcar todas como lida");
+        btnMarcarTodas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMarcarTodasActionPerformed(evt);
+            }
+        });
+
+        btnConcluir.setText("Concluir");
+        btnConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,7 +82,11 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTitulo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMarcarTodas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConcluir)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -74,12 +95,24 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
                 .addContainerGap(7, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMarcarTodas)
+                    .addComponent(btnConcluir))
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMarcarTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcarTodasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMarcarTodasActionPerformed
+
+    private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +140,8 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConcluir;
+    private javax.swing.JButton btnMarcarTodas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tblNotificacoes;
@@ -115,6 +150,14 @@ public class VisualizarNotificacoesView extends javax.swing.JInternalFrame {
     public JTable getTblNotificacoes() {
         return tblNotificacoes;
     }
-    
 
+    public JButton getBtnMarcarTodas() {
+        return btnMarcarTodas;
+    }
+
+    public JButton getBtnConcluir() {
+        return btnConcluir;
+    }
+    
+    
 }
