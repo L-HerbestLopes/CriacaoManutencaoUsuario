@@ -43,7 +43,7 @@ Conforme exigido pelo **RNF09**, a lista detalhada de requisitos que **não** fo
 
     Clone este repositório:
 
-    git clone <link-do-repositorio>
+    git clone https://github.com/L-HerbestLopes/CriacaoManutencaoUsuario
 
 ## ✒️ Autores
 
