@@ -21,16 +21,9 @@ import java.util.List;
 public class NotificacaoUsuarioRepository {
     
     public NotificacaoUsuarioRepository(ArrayList<NotificacaoUsuario> notificacoes) {
-        // Construtor mantido para compatibilidade
     }
     
-    /**
-     * Inclui o vínculo. 
-     * Lógica: 
-     * 1. Verifica se a notificação já existe na tabela 'notificacoes', se não, cria e pega o ID.
-     * 2. Pega o ID do usuário pelo Nome (já que o objeto Usuario não tem ID na memória).
-     * 3. Insere na tabela 'notificacoes_usuarios'.
-     */
+    
     public void incluirNotificacaoUsuario(NotificacaoUsuario notificacaoUsuario) {
         Connection conn = null;
         PreparedStatement pstmtNotif = null;
@@ -39,14 +32,11 @@ public class NotificacaoUsuarioRepository {
 
         try {
             conn = DatabaseConnection.connect();
-            // Desliga auto-commit para garantir integridade (transação)
             conn.setAutoCommit(false); 
 
-            // --- PASSO 1: Obter ID da Notificação (Criar se não existir) ---
             int idNotificacao = 0;
             String msg = notificacaoUsuario.getNotificacao().getMessage();
             
-            // Tenta buscar ID se já existe
             PreparedStatement pstmtBusca = conn.prepareStatement("SELECT id FROM notificacoes WHERE mensagem = ?");
             pstmtBusca.setString(1, msg);
             rs = pstmtBusca.executeQuery();
@@ -54,7 +44,6 @@ public class NotificacaoUsuarioRepository {
             if (rs.next()) {
                 idNotificacao = rs.getInt("id");
             } else {
-                // Se não existe, insere e pega o ID gerado
                 String sqlInsertNotif = "INSERT INTO notificacoes (mensagem) VALUES (?)";
                 pstmtNotif = conn.prepareStatement(sqlInsertNotif, Statement.RETURN_GENERATED_KEYS);
                 pstmtNotif.setString(1, msg);
@@ -65,13 +54,10 @@ public class NotificacaoUsuarioRepository {
                     idNotificacao = generatedKeys.getInt(1);
                 }
             }
-            // Fechar recursos auxiliares do passo 1
             if(rs != null) rs.close();
             if(pstmtBusca != null) pstmtBusca.close();
 
             
-            // --- PASSO 2: Inserir o Vínculo na tabela notificacoes_usuarios ---
-            // Usamos uma subquery para pegar o ID do usuário pelo nome
             String sqlLink = """
                 INSERT INTO notificacoes_usuarios (id_usuario, id_notificacao, lida) 
                 VALUES ((SELECT id FROM usuarios WHERE nome = ?), ?, ?)
@@ -80,11 +66,11 @@ public class NotificacaoUsuarioRepository {
             pstmtLink = conn.prepareStatement(sqlLink);
             pstmtLink.setString(1, notificacaoUsuario.getUsuario().getNome());
             pstmtLink.setInt(2, idNotificacao);
-            pstmtLink.setInt(3, 0); // 0 = Não lida
+            pstmtLink.setInt(3, 0); 
 
             pstmtLink.executeUpdate();
 
-            conn.commit(); // Confirma transação
+            conn.commit(); 
             System.out.println("Notificação vinculada ao usuário: " + notificacaoUsuario.getUsuario().getNome());
 
         } catch (SQLException e) {
@@ -93,7 +79,6 @@ public class NotificacaoUsuarioRepository {
                 try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
             }
         } finally {
-            // Fechar tudo manualmente
             try { if (pstmtLink != null) pstmtLink.close(); } catch (SQLException e) {}
             try { if (pstmtNotif != null) pstmtNotif.close(); } catch (SQLException e) {}
             try { if (conn != null) conn.close(); } catch (SQLException e) {}
@@ -101,7 +86,7 @@ public class NotificacaoUsuarioRepository {
     }
     
     public void removerNotificacaoUsuario(NotificacaoUsuario notificacao) {
-        // Remove apenas o vínculo
+        
         String sql = """
             DELETE FROM notificacoes_usuarios 
             WHERE id_usuario = (SELECT id FROM usuarios WHERE nome = ?) 
@@ -123,7 +108,6 @@ public class NotificacaoUsuarioRepository {
     public List<NotificacaoUsuario> getAll() {
         List<NotificacaoUsuario> lista = new ArrayList<>();
         
-        // Faz JOIN para trazer os dados completos do Usuário e da Mensagem
         String sql = """
             SELECT nu.lida, n.mensagem, 
                    u.nome, u.senha, u.tipo, u.data_registro, u.ativo
@@ -137,16 +121,13 @@ public class NotificacaoUsuarioRepository {
              ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
-                // 1. Reconstruir Objeto Notificacao
                 Notificacao n = new Notificacao(rs.getString("mensagem"));
                 
-                // 2. Reconstruir Objeto Usuario (Lógica similar ao UsuarioRepository)
                 Usuario u = mapearUsuario(rs);
                 
-                // 3. Criar objeto de vínculo (assumindo que existe esse construtor)
                 NotificacaoUsuario nu = new NotificacaoUsuario(n, u);
                 if(rs.getInt("lida") == 1) nu.marcarLida();
-                // Se tiver campo 'lida', poderia setar aqui: nu.setLida(rs.getInt("lida") == 1);
+                
                 
                 lista.add(nu);
             }
@@ -157,10 +138,7 @@ public class NotificacaoUsuarioRepository {
         return lista;
     }
     
-    /**
-     * Helper para mapear usuário (Cópia da lógica do UsuarioRepository para evitar duplicação se possível,
-     * mas aqui replicada para independência da classe).
-     */
+    
     private Usuario mapearUsuario(ResultSet rs) throws SQLException {
         String nome = rs.getString("nome");
         String senha = rs.getString("senha");
@@ -187,7 +165,6 @@ public class NotificacaoUsuarioRepository {
     }
     
     public void atualizarNotificacaoUsuario(NotificacaoUsuario notificacaoUsuario) {
-        // SQL para atualizar o campo 'lida' buscando pelos IDs através do nome/mensagem
         String sql = """
             UPDATE notificacoes_usuarios
             SET lida = ?
@@ -198,10 +175,8 @@ public class NotificacaoUsuarioRepository {
         try (Connection conn = DatabaseConnection.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // 1. Define o valor de Lida (1 para true, 0 para false)
             pstmt.setInt(1, notificacaoUsuario.foiLida() ? 1 : 0);
 
-            // 2. Define os parâmetros para encontrar o registro correto (WHERE)
             pstmt.setString(2, notificacaoUsuario.getUsuario().getNome());
             pstmt.setString(3, notificacaoUsuario.getNotificacao().getMessage());
 

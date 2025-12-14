@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Repositório para a tabela de mensagens de notificação.
- * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
- */
+
 public class NotificacaoRepository {
     
     public NotificacaoRepository(ArrayList<Notificacao> notificacoes) {

@@ -38,7 +38,6 @@ public class CadastroUsuarioPresenter {
                     cancelar();
                 } catch(Exception ex) {
                     ex.printStackTrace();
-                    // lidar e registrar erro aqui...
                 }
             }
         });
@@ -50,7 +49,6 @@ public class CadastroUsuarioPresenter {
                     confirmar();
                 } catch(Exception ex) {
                     ex.printStackTrace();
-                    // lidar e registrar erro aqui...
                 }
             }
         });
@@ -111,20 +109,7 @@ public class CadastroUsuarioPresenter {
         sistema.setUsuario(novoUsuario);
         view.setVisible(false);
         new LoginPresenter(this.repository);
-        //sistema.carregarView();
-         
-        //MOSTRAR adicionado com sucedo (alert) joptionpane
-        // view.getTxtSenha(); e view.getTxtSenhaConfirmada();
-    
-        // 2. Criar o Usuário (Model)
-        //repository.incluirUsuario(new Usuario(view.getName(), view.getTxtSenha(), LocalDate.now()));
-        //repository.cadastrar()
 
-        //usuarioRepository.cadastrar(novoUsuario);
-        //JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!", "Criado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
-        //System.out.println("Validação do usuário '" + view.getName() + "'solicitado, aguardando confirmação"); 
-        
-        //view.carregarView();
     }
 
 }

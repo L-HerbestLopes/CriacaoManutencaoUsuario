@@ -12,9 +12,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
- */
 public class VisualizarNotificacoesPresenter implements JanelaPresenter {
     private VisualizarNotificacoesView view;
     private Usuario usuario;

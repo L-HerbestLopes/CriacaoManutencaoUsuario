@@ -13,7 +13,6 @@ public class DatabaseConnection {
     public static Connection connect() {
         Connection conn = null;
         try {
-            // O driver já foi carregado graças à dependência no pom.xml
             conn = DriverManager.getConnection(DATABASE_URL);
             System.out.println("Conexão estabelecida com sucesso.");
         } catch (SQLException e) {

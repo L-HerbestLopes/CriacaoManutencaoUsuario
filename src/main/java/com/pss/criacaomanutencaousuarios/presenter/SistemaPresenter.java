@@ -6,17 +6,13 @@ import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
-import com.pss.criacaomanutencaousuarios.view.CriarUsuarioView;
 import com.pss.criacaomanutencaousuarios.view.SistemaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
-/**
- * Classe presenter singleton que lida com o sistema/desktop principal do MDI
- * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
- */
+
 public class SistemaPresenter {
     private final SistemaView view;
     private static SistemaPresenter instancia;
@@ -28,10 +24,7 @@ public class SistemaPresenter {
     public SistemaPresenter() {
         this.view = new SistemaView();
         configuraView();
-        
-        // inicialização de outras coisas junto ao construtor
-        // usuario se mantém null até autenticação/cadastro
-        // a referência a usuário é passada para janelas filhas mesmo se ainda for null
+  
     }
     
     public static SistemaPresenter getInstancia() {
@@ -65,7 +58,6 @@ public class SistemaPresenter {
         view.setVisible(true);
         view.getMnbSistema().setVisible(true);
         
-        // esconde todas as funcionalidades para que decida quais serão mostradas depois
         view.getMitEnviarNotificacoes().setVisible(false);
         view.getMitAutenticarUsuarios().setVisible(false);
         view.getMitPromoverUsuario().setVisible(false);
@@ -78,16 +70,13 @@ public class SistemaPresenter {
         
         if (usuario != null) {
              view.getLblIdentificacaoUsuario().setText(usuario.toString());
-            
-             //TO DO     arrumar a linha de baixo para mostrar quantas notificacoes o usuario tem
              view.getBtnNotificacoes().setText(new NotificacaoUsuarioService().getNotificacoes(usuario, notificacoesDeUsuario).size() + " Notificaçao(oes)");
             
         } else {
             view.getLblIdentificacaoUsuario().setText("Aguardando login");
         }
         
-        // expor funcionalidades apenas para usuários com acesso
-        if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.administrador.getCodigo()) {
+        if(usuario.getTipo().getCodigo() == TipoDeUsuarioEnum.administrador.getCodigo()) {
             view.getMitEnviarNotificacoes().setVisible(true);
             view.getMitCriarUsuario().setVisible(true);
             view.getMitAutenticarUsuarios().setVisible(true);
@@ -96,9 +85,8 @@ public class SistemaPresenter {
             view.setVisible(false);
         }
         
-        if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.usuarioComum.getCodigo()) {
-        }
         if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.administradorPrincipal.getCodigo()){
+            view.getMitEnviarNotificacoes().setVisible(true);
             view.getMitExcluirUsuario().setVisible(true);
             view.getMnuSistema().setVisible(true);
             view.getMitCriarUsuario().setVisible(true);

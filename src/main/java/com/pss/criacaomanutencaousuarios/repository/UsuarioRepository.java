@@ -11,17 +11,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Repositório responsável pela persistência de usuários no SQLite.
- * @author André Tavares Louzada, Lucas Herbest Lopes e Yuri Sousa Almeida
- */
+
 public class UsuarioRepository {
 
     public UsuarioRepository() {
-        // Não é necessário manter lista em memória, pois agora usamos o banco.
     }
     
-    // INSERT
     public void incluirUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuarios(nome, senha, tipo, data_registro, ativo) VALUES(?, ?, ?, ?, ?)";
 
@@ -136,7 +131,6 @@ public class UsuarioRepository {
         
         return u;
     }
-    // Em UsuarioRepository.java
 
 public void atualizarUsuario(Usuario usuario) {
     String sql = "UPDATE usuarios SET senha=?, tipo=?, ativo=? WHERE nome=?";
