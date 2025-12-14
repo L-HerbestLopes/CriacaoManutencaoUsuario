@@ -81,6 +81,11 @@
                 <Property name="text" type="java.lang.String" value="Definir Log como JSON"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mitResetarSistema">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Resetar Sistema"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

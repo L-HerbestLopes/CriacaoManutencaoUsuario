@@ -9,6 +9,7 @@ import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
 import com.pss.criacaomanutencaousuarios.view.SistemaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -65,6 +66,7 @@ public class SistemaPresenter {
         view.getMnuSistema().setVisible(false);
         view.getMitCriarUsuario().setVisible(false);
         view.getMitRebaixarUsuario().setVisible(false);
+        view.getMitResetarSistema().setVisible(false);
         
         view.getMitVisualizarNotificacoes().setVisible(true);
         
@@ -93,6 +95,7 @@ public class SistemaPresenter {
             view.getMitRebaixarUsuario().setVisible(true);
             view.getMitPromoverUsuario().setVisible(true);
             view.getMitAutenticarUsuarios().setVisible(true);
+            view.getMitResetarSistema().setVisible(true);
         }
     }
     
@@ -188,6 +191,15 @@ public class SistemaPresenter {
                      abrirJanela(new RebaixarUsuarioPresenter(usuario, repository));
                 }
             }
+         });
+         view.getMitResetarSistema().addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 File bancoArquivo = new File("banco_dados.db");
+                 
+                 bancoArquivo.delete();
+                 view.dispose();
+             }
          });
         
         view.getMnbSistema().setVisible(false);

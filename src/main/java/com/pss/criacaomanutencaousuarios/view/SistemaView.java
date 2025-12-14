@@ -44,6 +44,7 @@ public class SistemaView extends javax.swing.JFrame {
         mnuSistema = new javax.swing.JMenu();
         mitCSV = new javax.swing.JMenuItem();
         mitJSON = new javax.swing.JMenuItem();
+        mitResetarSistema = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +98,9 @@ public class SistemaView extends javax.swing.JFrame {
         mitJSON.setText("Definir Log como JSON");
         mnuSistema.add(mitJSON);
 
+        mitResetarSistema.setText("Resetar Sistema");
+        mnuSistema.add(mitResetarSistema);
+
         mnbSistema.add(mnuSistema);
 
         setJMenuBar(mnbSistema);
@@ -137,6 +141,7 @@ public class SistemaView extends javax.swing.JFrame {
     private javax.swing.JMenuItem mitJSON;
     private javax.swing.JMenuItem mitPromoverUsuario;
     private javax.swing.JMenuItem mitRebaixarUsuario;
+    private javax.swing.JMenuItem mitResetarSistema;
     private javax.swing.JMenuItem mitTrocarDeUsuario;
     private javax.swing.JMenuItem mitTrocarSenha;
     private javax.swing.JMenuItem mitVisualizarNotificacoes;
@@ -203,4 +208,10 @@ public class SistemaView extends javax.swing.JFrame {
     public JMenuItem getMitRebaixarUsuario() {
         return mitRebaixarUsuario;
     }
+
+    public JMenuItem getMitResetarSistema() {
+        return mitResetarSistema;
+    }
+    
+    
 }
