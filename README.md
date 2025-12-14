@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Usuários
+# Atividade avaliativa (15%) - Projeto de Sistemas de Software - Criação e Manutenção de usuários
 
 Este projeto consiste em um sistema desktop para gerenciamento de usuários, desenvolvido como atividade avaliativa da disciplina de **Projeto de Sistemas de Software** da **UFES**.
 
