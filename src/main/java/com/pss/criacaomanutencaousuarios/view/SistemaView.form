@@ -32,6 +32,16 @@
                 <Property name="text" type="java.lang.String" value="Promover Usuario"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mitRebaixarUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Rebaixar Usuario"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mitCriarUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Criar Usuario"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mitExcluirUsuario">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir Usuario"/>

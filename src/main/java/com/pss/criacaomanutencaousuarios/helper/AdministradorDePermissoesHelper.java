@@ -27,7 +27,7 @@ public class AdministradorDePermissoesHelper {
         }
         
         public boolean podeAutenticarUsuario(Usuario usuario){
-            return usuario.getTipo().equals(TipoDeUsuarioEnum.administradorPrincipal);
+            return !usuario.getTipo().equals(TipoDeUsuarioEnum.usuarioComum);
         }
         
         public boolean podeAtualizarUsuario(Usuario usuario){

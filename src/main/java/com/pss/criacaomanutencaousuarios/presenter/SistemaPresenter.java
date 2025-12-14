@@ -6,6 +6,7 @@ import com.pss.criacaomanutencaousuarios.repository.NotificacaoRepository;
 import com.pss.criacaomanutencaousuarios.repository.NotificacaoUsuarioRepository;
 import com.pss.criacaomanutencaousuarios.model.Usuario;
 import com.pss.criacaomanutencaousuarios.repository.UsuarioRepository;
+import com.pss.criacaomanutencaousuarios.view.CriarUsuarioView;
 import com.pss.criacaomanutencaousuarios.view.SistemaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,8 +71,10 @@ public class SistemaPresenter {
         view.getMitPromoverUsuario().setVisible(false);
         view.getMitExcluirUsuario().setVisible(false);
         view.getMnuSistema().setVisible(false);
+        view.getMitCriarUsuario().setVisible(false);
+        view.getMitRebaixarUsuario().setVisible(false);
         
-        view.getMitVisualizarNotificacoes().setVisible(false);
+        view.getMitVisualizarNotificacoes().setVisible(true);
         
         if (usuario != null) {
              view.getLblIdentificacaoUsuario().setText(usuario.toString());
@@ -86,16 +89,22 @@ public class SistemaPresenter {
         // expor funcionalidades apenas para usuários com acesso
         if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.administrador.getCodigo()) {
             view.getMitEnviarNotificacoes().setVisible(true);
+            view.getMitCriarUsuario().setVisible(true);
             view.getMitAutenticarUsuarios().setVisible(true);
-            view.getMitPromoverUsuario().setVisible(true);
+        }
+        if(usuario.getTipo().getCodigo() == TipoDeUsuarioEnum.naoConfirmado.getCodigo()){
+            view.setVisible(false);
         }
         
         if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.usuarioComum.getCodigo()) {
-            view.getMitVisualizarNotificacoes().setVisible(true);
         }
         if(usuario.getTipo().getCodigo() >= TipoDeUsuarioEnum.administradorPrincipal.getCodigo()){
             view.getMitExcluirUsuario().setVisible(true);
             view.getMnuSistema().setVisible(true);
+            view.getMitCriarUsuario().setVisible(true);
+            view.getMitRebaixarUsuario().setVisible(true);
+            view.getMitPromoverUsuario().setVisible(true);
+            view.getMitAutenticarUsuarios().setVisible(true);
         }
     }
     
@@ -175,6 +184,21 @@ public class SistemaPresenter {
              @Override
             public void actionPerformed(ActionEvent e) {
                 abrirJanela(new VisualizarNotificacoesPresenter(usuario, notificacoesDeUsuario));
+            }
+         });
+
+         view.getMitCriarUsuario().addActionListener(new ActionListener(){
+             @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirJanela(new CriarUsuarioPresenter(repository)); 
+            }
+         });
+         view.getMitRebaixarUsuario().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (usuario != null) {
+                     abrirJanela(new RebaixarUsuarioPresenter(usuario, repository));
+                }
             }
          });
         

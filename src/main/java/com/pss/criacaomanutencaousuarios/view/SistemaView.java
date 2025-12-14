@@ -35,6 +35,8 @@ public class SistemaView extends javax.swing.JFrame {
         mitTrocarSenha = new javax.swing.JMenuItem();
         mitAutenticarUsuarios = new javax.swing.JMenuItem();
         mitPromoverUsuario = new javax.swing.JMenuItem();
+        mitRebaixarUsuario = new javax.swing.JMenuItem();
+        mitCriarUsuario = new javax.swing.JMenuItem();
         mitExcluirUsuario = new javax.swing.JMenuItem();
         mnuNotificacoes = new javax.swing.JMenu();
         mitVisualizarNotificacoes = new javax.swing.JMenuItem();
@@ -65,6 +67,12 @@ public class SistemaView extends javax.swing.JFrame {
 
         mitPromoverUsuario.setText("Promover Usuario");
         mnuUsuario.add(mitPromoverUsuario);
+
+        mitRebaixarUsuario.setText("Rebaixar Usuario");
+        mnuUsuario.add(mitRebaixarUsuario);
+
+        mitCriarUsuario.setText("Criar Usuario");
+        mnuUsuario.add(mitCriarUsuario);
 
         mitExcluirUsuario.setText("Excluir Usuario");
         mnuUsuario.add(mitExcluirUsuario);
@@ -123,10 +131,12 @@ public class SistemaView extends javax.swing.JFrame {
     private javax.swing.JLabel lblIdentificacaoUsuario;
     private javax.swing.JMenuItem mitAutenticarUsuarios;
     private javax.swing.JMenuItem mitCSV;
+    private javax.swing.JMenuItem mitCriarUsuario;
     private javax.swing.JMenuItem mitEnviarNotificacoes;
     private javax.swing.JMenuItem mitExcluirUsuario;
     private javax.swing.JMenuItem mitJSON;
     private javax.swing.JMenuItem mitPromoverUsuario;
+    private javax.swing.JMenuItem mitRebaixarUsuario;
     private javax.swing.JMenuItem mitTrocarDeUsuario;
     private javax.swing.JMenuItem mitTrocarSenha;
     private javax.swing.JMenuItem mitVisualizarNotificacoes;
@@ -185,6 +195,12 @@ public class SistemaView extends javax.swing.JFrame {
     public JButton getBtnNotificacoes() {
         return btnNotificacoes;
     }
-    
-    
+
+    public JMenuItem getMitCriarUsuario() {
+        return mitCriarUsuario;
+    }
+
+    public JMenuItem getMitRebaixarUsuario() {
+        return mitRebaixarUsuario;
+    }
 }
